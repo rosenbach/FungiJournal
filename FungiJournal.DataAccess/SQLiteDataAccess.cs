@@ -7,33 +7,32 @@ using System.Text;
 using System.Threading.Tasks;
 using Dapper;
 using FungiJournal.Domain.Models;
+using Microsoft.Extensions.Options;
 
 namespace FungiJournal.DataAccess
 {
-    public class SQLiteDataAccess
+    public class SQLiteDataAccess : IDataAccess
     {
+        private readonly DataAccessConfiguration dataAccessConfiguration;
 
-        public static List<Entry> LoadEntries()
+        public IDbConnection Connection => new SQLiteConnection(dataAccessConfiguration.ConnectionString);
+
+        public SQLiteDataAccess(IOptions<DataAccessConfiguration> dataAccessConfiguration)
         {
-            //TODO put into a .config file and call via ConfigurationManager
-            using (IDbConnection cnn = new SQLiteConnection("Data Source=..\\FungiJournal.DataAccess\\FungiJournalDb.db;Version=3;UseUTF16Encoding=True;"))
-            {
-                var output = cnn.Query<Entry>("select * from entries", new DynamicParameters());
-                return output.ToList();
-            };
+            this.dataAccessConfiguration = dataAccessConfiguration.Value;
         }
 
-        public static void AddEntry(Entry entry)
+        public List<Entry> LoadEntries()
         {
-            //TODO put into a .config file and call via ConfigurationManager
-            using (IDbConnection cnn = new SQLiteConnection("Data Source=..\\FungiJournal.DataAccess\\FungiJournalDb.db;Version=3;UseUTF16Encoding=True;"))
-            {
-                cnn.Execute("insert into entries (Description) values (@Description)", entry);
-            };
-
+            using IDbConnection cnn = Connection;
+            var output = cnn.Query<Entry>("select * from entries", new DynamicParameters());
+            return output.ToList();
         }
 
-
-
+        public void AddEntry(Entry entry)
+        {
+            using IDbConnection cnn = Connection;
+            cnn.Execute("insert into entries (Description) values (@Description)", entry);
+        }
     }
 }

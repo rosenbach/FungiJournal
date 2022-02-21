@@ -1,6 +1,12 @@
-var builder = WebApplication.CreateBuilder(args);
+using FungiJournal.DataAccess;
+using System.Data;
 
+var builder = WebApplication.CreateBuilder(args);
+builder.Configuration.AddJsonFile("appsettings.json");
+builder.Services.Configure<DataAccessConfiguration>(builder.Configuration.GetSection(nameof(DataAccessConfiguration)));
 // Add services to the container.
+
+builder.Services.AddSingleton<IDataAccess, SQLiteDataAccess>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

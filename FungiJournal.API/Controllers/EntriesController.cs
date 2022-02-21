@@ -9,14 +9,19 @@ namespace FungiJournal.API.Controllers
     [ApiController]
     public class EntriesController : ControllerBase
     {
+        private readonly IDataAccess dataAccess;
+        public EntriesController(IDataAccess dataAccess)
+        {
+            this.dataAccess = dataAccess;
+        }
 
         [HttpGet]
-        public IActionResult GetAll() => Ok(SQLiteDataAccess.LoadEntries());
+        public IActionResult GetAll() => Ok(dataAccess.LoadEntries());
 
         [HttpPost]
         public ActionResult<Entry> PostEntry([FromBody] Entry entry)
         {
-            SQLiteDataAccess.AddEntry(entry);
+            dataAccess.AddEntry(entry);
 
             return Ok(entry);
         }
