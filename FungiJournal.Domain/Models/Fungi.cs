@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace FungiJournal.Domain.Models
 {
-    internal class Fungi
+    public class Fungi
     {
+        public int FungiId { get; set; }
+        public string? Name { get; set; }
+        public string? LatinName { get; set; }
+        public bool? IsToxic { get; set; }
     }
 }
