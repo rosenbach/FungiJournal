@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
-
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FungiJournal.Domain.Models
 {
@@ -13,7 +13,10 @@ namespace FungiJournal.Domain.Models
         [Key] [Required]
         public int EntryId { get; set; }
         public DateTime? Timestamp { get; set; }
+
+        [ForeignKey("FungiId")]
         public int? FungiId { get; set; }
+        public Fungi? Fungi { get; set; }
         public string? Description { get; set; }
     }
 }

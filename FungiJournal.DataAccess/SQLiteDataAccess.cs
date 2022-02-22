@@ -11,28 +11,38 @@ using Microsoft.Extensions.Options;
 
 namespace FungiJournal.DataAccess
 {
-    public class SQLiteDataAccess : IDataAccess
+    public class SQLiteDataAccess : IDataAccess, IDisposable
     {
-        private readonly DataAccessConfiguration dataAccessConfiguration;
+        private readonly CodeFirstDbContext codeFirstDbContext;
 
-        public IDbConnection Connection => new SQLiteConnection(dataAccessConfiguration.ConnectionString);
-
-        public SQLiteDataAccess(IOptions<DataAccessConfiguration> dataAccessConfiguration)
+        public SQLiteDataAccess(CodeFirstDbContext codeFirstDbContext)
         {
-            this.dataAccessConfiguration = dataAccessConfiguration.Value;
+            this.codeFirstDbContext = codeFirstDbContext;
         }
 
         public List<Entry> LoadEntries()
         {
-            using IDbConnection cnn = Connection;
-            var output = cnn.Query<Entry>("select * from entries", new DynamicParameters());
-            return output.ToList();
+            var output = codeFirstDbContext.Entries?.ToList();
+
+            return output?.ToList() ?? new List<Entry>();
+        }
+
+        public Entry GetById(int id)
+        {
+            var output = codeFirstDbContext.Entries?.Find(id);
+
+            return output;
         }
 
         public void AddEntry(Entry entry)
         {
-            using IDbConnection cnn = Connection;
-            cnn.Execute("insert into entries (Description) values (@Description)", entry);
+            codeFirstDbContext.Entries?.Add(entry);
+            codeFirstDbContext.SaveChanges();
+        }
+
+        public void Dispose()
+        {
+            codeFirstDbContext.Dispose();
         }
     }
 }
