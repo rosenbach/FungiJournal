@@ -7,11 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FungiJournal.API", "FungiJo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FungiJournal.DataAccess", "FungiJournal.DataAccess\FungiJournal.DataAccess.csproj", "{57FE284A-47A6-4B95-A2D6-E0916169A797}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FungiJournal.Domain", "FungiJournal.Domain\FungiJournal.Domain.csproj", "{85F0C798-55FF-4E53-80D2-11B74E6CBDA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FungiJournal.Domain", "FungiJournal.Domain\FungiJournal.Domain.csproj", "{85F0C798-55FF-4E53-80D2-11B74E6CBDA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FungiJournal.Domain.Test", "FungiJournal.Domain.Test\FungiJournal.Domain.Test.csproj", "{2DCDA46B-EC9F-49FC-82B4-883BB80311D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FungiJournal.Domain.Test", "FungiJournal.Domain.Test\FungiJournal.Domain.Test.csproj", "{2DCDA46B-EC9F-49FC-82B4-883BB80311D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FungiJournal.DataAccess.Test", "FungiJournal.DataAccess.Test\FungiJournal.DataAccess.Test.csproj", "{A938D6C0-2736-4287-BB88-34BC050A6265}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FungiJournal.DataAccess.Test", "FungiJournal.DataAccess.Test\FungiJournal.DataAccess.Test.csproj", "{A938D6C0-2736-4287-BB88-34BC050A6265}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6A86B839-08C7-492B-ADF7-138FFD91D05E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +44,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2DCDA46B-EC9F-49FC-82B4-883BB80311D5} = {6A86B839-08C7-492B-ADF7-138FFD91D05E}
+		{A938D6C0-2736-4287-BB88-34BC050A6265} = {6A86B839-08C7-492B-ADF7-138FFD91D05E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C9C4EB04-DAD4-4EB0-AF36-B96F3799BEE4}
