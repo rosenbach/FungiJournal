@@ -8,6 +8,7 @@ namespace FungiJournal.DataAccess
 {
     public class DataAccessConfiguration
     {
-        public string? ConnectionString { get; set; }
+        public string ConnectionString { get; set; } = default!;
+        public string? InMemoryConnectionString { get; set; }
     }
 }

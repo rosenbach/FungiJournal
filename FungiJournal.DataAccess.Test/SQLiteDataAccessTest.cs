@@ -1,6 +1,7 @@
 using Xunit;
 using FluentAssertions;
 using Microsoft.Extensions.Options;
+using Microsoft.EntityFrameworkCore;
 
 namespace FungiJournal.DataAccess.Test
 {
@@ -13,15 +14,22 @@ namespace FungiJournal.DataAccess.Test
         {
             //arrange
             //open the connection to the cnn
-            var options = Options.Create(new DataAccessConfiguration { ConnectionString = "Data Source=:memory:;Version=3;New=True;" });
-            var sut = new SQLiteDataAccess(options);
+            var options = Options.Create(new DataAccessConfiguration { ConnectionString = "TestDB" });
+            
+            var dbContextOptions = new DbContextOptionsBuilder<CodeFirstDbContext>()
+                .UseInMemoryDatabase("123").Options;
+
+            var dbContext = new CodeFirstDbContext(dbContextOptions, options);
+            var sut = new SQLiteDataAccess(dbContext);
 
             //act
             sut.AddEntry(new Domain.Models.Entry { Description = "Test"});
             var result = sut.LoadEntries();
 
             //assert
-            result.Should().BeEquivalentTo(new[] { new Domain.Models.Entry { Description = "Test" } });
+            result.Should().BeEquivalentTo(
+                new[] { new Domain.Models.Entry { Description = "Test" } }, 
+                options => options.Excluding(x => x.EntryId));
         }
     }
 }

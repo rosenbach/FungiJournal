@@ -18,6 +18,9 @@ namespace FungiJournal.API.Controllers
         [HttpGet]
         public IActionResult GetAll() => Ok(dataAccess.LoadEntries());
 
+        [HttpGet("{id}")]
+        public IActionResult GetById([FromRoute] int id) => Ok(dataAccess.GetById(id));
+
         [HttpPost]
         public ActionResult<Entry> PostEntry([FromBody] Entry entry)
         {
