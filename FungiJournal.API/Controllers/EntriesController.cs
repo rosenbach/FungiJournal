@@ -26,7 +26,13 @@ namespace FungiJournal.API.Controllers
         {
             dataAccess.AddEntry(entry);
 
-            return Ok(entry);
+            return CreatedAtAction(nameof(GetById),
+                                   new { id = entry.EntryId },
+                                   entry);
         }
+
+        /*[HttpDelete("{id}")]
+        public ActionResult
+        */
     }
 }
