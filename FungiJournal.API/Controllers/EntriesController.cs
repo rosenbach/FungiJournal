@@ -19,7 +19,7 @@ namespace FungiJournal.API.Controllers
         public IActionResult GetAll() => Ok(dataAccess.LoadEntries());
 
         [HttpGet("{id}")]
-        public IActionResult GetById([FromRoute] int id) => Ok(dataAccess.GetById(id));
+        public IActionResult GetById([FromRoute] int id) => Ok(dataAccess.GetEntry(id));
 
         [HttpPost]
         public ActionResult<Entry> PostEntry([FromBody] Entry entry)
@@ -31,8 +31,21 @@ namespace FungiJournal.API.Controllers
                                    entry);
         }
 
-        /*[HttpDelete("{id}")]
-        public ActionResult
-        */
+        [HttpDelete("{id}")]
+        public ActionResult<Entry> DeleteEntry(int id)
+        {
+            Entry entryToDelete = dataAccess.GetEntry(id);
+
+            if (entryToDelete == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                dataAccess.DeleteEntry(id);
+            }
+            return Ok(entryToDelete);
+        }
+
     }
 }

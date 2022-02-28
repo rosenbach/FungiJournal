@@ -10,7 +10,8 @@ namespace FungiJournal.DataAccess
     public interface IDataAccess
     {
         void AddEntry(Entry entry);
-        Entry GetById(int id);
+        Entry GetEntry(int id);
         List<Entry> LoadEntries();
+        void DeleteEntry(int id);
     }
 }

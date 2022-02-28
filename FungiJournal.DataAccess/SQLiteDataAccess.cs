@@ -27,7 +27,7 @@ namespace FungiJournal.DataAccess
             return output?.ToList() ?? new List<Entry>();
         }
 
-        public Entry GetById(int id)
+        public Entry GetEntry(int id)
         {
             var output = codeFirstDbContext.Entries?.Find(id);
 
@@ -37,6 +37,12 @@ namespace FungiJournal.DataAccess
         public void AddEntry(Entry entry)
         {
             codeFirstDbContext.Entries?.Add(entry);
+            codeFirstDbContext.SaveChanges();
+        }
+
+        public void DeleteEntry(int id)
+        {
+            codeFirstDbContext.Entries?.Remove(GetEntry(id));
             codeFirstDbContext.SaveChanges();
         }
 
