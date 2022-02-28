@@ -44,7 +44,7 @@ namespace FungiJournal.DataAccess
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (dataAccessConfiguration.ConnectionString.StartsWith("TestDB"))
+            if (dataAccessConfiguration.UseInMemoryDatabase)
             {
                 optionsBuilder.UseInMemoryDatabase("Test");
             }
