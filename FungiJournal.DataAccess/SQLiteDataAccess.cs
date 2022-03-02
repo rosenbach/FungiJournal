@@ -50,5 +50,10 @@ namespace FungiJournal.DataAccess
         {
             codeFirstDbContext.Dispose();
         }
+
+        public void DisposeAsync()
+        {
+            codeFirstDbContext.DisposeAsync();
+        }
     }
 }

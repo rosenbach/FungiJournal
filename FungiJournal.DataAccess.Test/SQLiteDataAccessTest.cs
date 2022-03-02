@@ -13,9 +13,8 @@ namespace FungiJournal.DataAccess.Test
         public async void TestIfEntryWasAdded()
         {
             //arrange
-            var sut = new SQLiteDataAccess(SetupTestDBContext());
-
-            Entry mockEntry = CreateMockEntry();
+            var sut = new SQLiteDataAccess(DataAccessMock.SetupMockDBContext());
+            Entry mockEntry = DataAccessMock.CreateMockEntry();
 
             //act
             sut.AddEntry(mockEntry);
@@ -25,7 +24,8 @@ namespace FungiJournal.DataAccess.Test
             result.Should().BeEquivalentTo(
                 new[] { mockEntry },
                 options => options.Excluding(x => x.EntryId));
-        
+
+            sut.DisposeAsync();
         }
 
 
@@ -33,9 +33,8 @@ namespace FungiJournal.DataAccess.Test
         public async void TestIfEntryWasDeletedAsync()
         {
             //arrange
-            var sut = new SQLiteDataAccess(SetupTestDBContext());
-
-            Entry mockEntry = CreateMockEntry();
+            var sut = new SQLiteDataAccess(DataAccessMock.SetupMockDBContext());
+            Entry mockEntry = DataAccessMock.CreateMockEntry();
             sut.AddEntry(mockEntry);
             var entries = await sut.GetEntries();
             int entriesCount = entries.Count;
@@ -43,39 +42,28 @@ namespace FungiJournal.DataAccess.Test
             //act
             sut.DeleteEntry(mockEntry.EntryId);
             entries = await sut.GetEntries();
-            var result = entries.Count;
-
-
+            bool result = entries.Contains(mockEntry);
 
             //assert
-            result.Should().Be(entriesCount - 1);
-            sut.Dispose();
+            result.Should().Be(false);
+            sut.DisposeAsync();
         }
 
         [Fact]
         public void TestIfDatabaseIsInMemory()
         {
             //arrange
-            var sut = SetupTestDBContext();
+            var sut = DataAccessMock.SetupMockDBContext();
 
             //act
             var result = sut.Database.IsInMemory();
 
             //assert
             result.Should().Be(true);
+            sut.DisposeAsync();
         }
 
 
-        private Entry CreateMockEntry()
-        {
-            return new Entry { EntryId = 1, Description = "Mock Entry" };
-        }
 
-        private CodeFirstDbContext SetupTestDBContext()
-        {
-            var options = Options.Create(new DataAccessConfiguration { UseInMemoryDatabase = true });
-            var dbContextOptions = new DbContextOptionsBuilder<CodeFirstDbContext>().Options;
-            return new CodeFirstDbContext(dbContextOptions, options);
-        }
     }
 }
