@@ -16,7 +16,7 @@ namespace FungiJournal.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll() => Ok(dataAccess.LoadEntries());
+        public IActionResult GetAll() => Ok(dataAccess.GetEntries());
 
         [HttpGet("{id}")]
         public IActionResult GetById([FromRoute] int id) => Ok(dataAccess.GetEntry(id));
@@ -32,9 +32,9 @@ namespace FungiJournal.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public ActionResult<Entry> DeleteEntry(int id)
+        public async Task<ActionResult<Entry>> DeleteEntry(int id)
         {
-            Entry entryToDelete = dataAccess.GetEntry(id);
+            Entry entryToDelete = await dataAccess.GetEntry(id);
 
             if (entryToDelete == null)
             {

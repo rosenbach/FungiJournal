@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Dapper;
 using FungiJournal.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
 namespace FungiJournal.DataAccess
@@ -20,30 +21,29 @@ namespace FungiJournal.DataAccess
             this.codeFirstDbContext = codeFirstDbContext;
         }
 
-        public List<Entry> LoadEntries()
+        public async Task<List<Entry>> GetEntries()
         {
-            var output = codeFirstDbContext.Entries?.ToList();
-
-            return output?.ToList() ?? new List<Entry>();
+            var output = await codeFirstDbContext.Entries.ToListAsync();
+            return output;
         }
 
-        public Entry GetEntry(int id)
+        public async Task<Entry> GetEntry(int id)
         {
-            var output = codeFirstDbContext.Entries?.Find(id);
+            var output = await codeFirstDbContext.Entries.FindAsync(id);
 
             return output;
         }
 
-        public void AddEntry(Entry entry)
+        public async void AddEntry(Entry entry)
         {
             codeFirstDbContext.Entries?.Add(entry);
-            codeFirstDbContext.SaveChanges();
+            await codeFirstDbContext.SaveChangesAsync();
         }
 
-        public void DeleteEntry(int id)
+        public async void DeleteEntry(int id)
         {
-            codeFirstDbContext.Entries?.Remove(GetEntry(id));
-            codeFirstDbContext.SaveChanges();
+            codeFirstDbContext.Entries?.Remove(await GetEntry(id));
+            await codeFirstDbContext.SaveChangesAsync();
         }
 
         public void Dispose()
