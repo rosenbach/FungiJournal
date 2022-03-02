@@ -25,7 +25,7 @@ namespace FungiJournal.DataAccess
         public DbSet<Fungi>? Fungis => this.Set<Fungi>();
         public DbSet<Entry>? Entries => this.Set<Entry>();
 
-        public List<Entry> LoadEntries()
+        public List<Entry> GetEntries()
         {
             return Entries?.ToList() ?? new List<Entry>();
         }

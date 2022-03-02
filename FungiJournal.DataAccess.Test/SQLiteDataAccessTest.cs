@@ -10,7 +10,7 @@ namespace FungiJournal.DataAccess.Test
     public class SQLiteDataAccessTest
     {
         [Fact]
-        public void TestIfEntryWasAdded()
+        public async void TestIfEntryWasAdded()
         {
             //arrange
             var sut = new SQLiteDataAccess(SetupTestDBContext());
@@ -19,28 +19,33 @@ namespace FungiJournal.DataAccess.Test
 
             //act
             sut.AddEntry(mockEntry);
-            var result = sut.LoadEntries();
+            var result = await sut.GetEntries();
 
             //assert
             result.Should().BeEquivalentTo(
                 new[] { mockEntry },
                 options => options.Excluding(x => x.EntryId));
+        
         }
 
 
         [Fact]
-        public void TestIfEntryWasDeleted()
+        public async void TestIfEntryWasDeletedAsync()
         {
             //arrange
             var sut = new SQLiteDataAccess(SetupTestDBContext());
 
             Entry mockEntry = CreateMockEntry();
             sut.AddEntry(mockEntry);
-            int entriesCount = sut.LoadEntries().Count;
+            var entries = await sut.GetEntries();
+            int entriesCount = entries.Count;
 
             //act
             sut.DeleteEntry(mockEntry.EntryId);
-            var result = sut.LoadEntries().Count;
+            entries = await sut.GetEntries();
+            var result = entries.Count;
+
+
 
             //assert
             result.Should().Be(entriesCount - 1);
@@ -63,8 +68,7 @@ namespace FungiJournal.DataAccess.Test
 
         private Entry CreateMockEntry()
         {
-            Random rnd = new Random();
-            return new Entry { EntryId = rnd.Next(), Description = "Mock Entry" };
+            return new Entry { EntryId = 1, Description = "Mock Entry" };
         }
 
         private CodeFirstDbContext SetupTestDBContext()
