@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\FungiJournal.API\FungiJournal.API.csproj" />
+    <ProjectReference Include="..\..\FungiJournal.DataAccess.Test\FungiJournal.DataAccess.Test.csproj" />
     <ProjectReference Include="..\..\FungiJournal.DataAccess\FungiJournal.DataAccess.csproj" />
     <ProjectReference Include="..\..\FungiJournal.Domain\FungiJournal.Domain.csproj" />
   </ItemGroup>
