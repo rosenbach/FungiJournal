@@ -9,9 +9,9 @@ namespace FungiJournal.DataAccess
 {
     public interface IDataAccess
     {
+        Task<List<Entry>> GetEntries();
+        Task<Entry> GetEntry(int id);
         void AddEntry(Entry entry);
-        Entry GetEntry(int id);
-        List<Entry> LoadEntries();
         void DeleteEntry(int id);
     }
 }
