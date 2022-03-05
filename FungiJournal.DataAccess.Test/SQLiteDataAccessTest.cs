@@ -4,49 +4,64 @@ using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using FungiJournal.Domain.Models;
 using System;
+using System.Threading.Tasks;
 
 namespace FungiJournal.DataAccess.Test
 {
     public class SQLiteDataAccessTest
     {
         [Fact]
-        public async void TestIfEntryWasAdded()
+        public async Task TestIfEntryWasAdded()
         {
             //arrange
             var sut = new SQLiteDataAccess(DataAccessMock.SetupMockDBContext());
-            Entry mockEntry = DataAccessMock.CreateMockEntry();
 
-            //act
-            sut.AddEntry(mockEntry);
-            var result = await sut.GetEntries();
+            using (sut)
+            {
+                Entry mockEntry = DataAccessMock.CreateMockEntry();
 
-            //assert
-            result.Should().BeEquivalentTo(
-                new[] { mockEntry },
-                options => options.Excluding(x => x.EntryId));
+                //act
+                await sut.AddEntryAsync(mockEntry);
+                var result = await sut.GetEntriesAsync();
 
-            sut.DisposeAsync();
+                //assert
+                result.Should().BeEquivalentTo(
+                    new[] { mockEntry },
+                    options => options.Excluding(x => x.EntryId));
+
+            }
         }
 
 
         [Fact]
-        public async void TestIfEntryWasDeletedAsync()
+        public async Task TestIfEntryWasDeletedAsync()
         {
+            //add two, delete one, check by ID
+
             //arrange
             var sut = new SQLiteDataAccess(DataAccessMock.SetupMockDBContext());
-            Entry mockEntry = DataAccessMock.CreateMockEntry();
-            sut.AddEntry(mockEntry);
-            var entries = await sut.GetEntries();
-            int entriesCount = entries.Count;
 
-            //act
-            sut.DeleteEntry(mockEntry.EntryId);
-            entries = await sut.GetEntries();
-            bool result = entries.Contains(mockEntry);
+            using (sut)
+            {
+                Entry mockEntry = DataAccessMock.CreateMockEntry();
+                Entry mockEntry_toDelete = DataAccessMock.CreateMockEntry();
+                await sut.AddEntryAsync(mockEntry);
+                await sut.AddEntryAsync(mockEntry_toDelete);
 
-            //assert
-            result.Should().Be(false);
-            sut.DisposeAsync();
+                var expected = new[] {
+                new Entry {
+                    EntryId = mockEntry.EntryId,
+                    Description = mockEntry.Description
+                }
+            };
+
+                //act
+                await sut.DeleteEntryAsync(mockEntry_toDelete);
+                var entries = await sut.GetEntriesAsync();
+
+                //assert
+                entries.Should().BeEquivalentTo(expected);
+            }
         }
 
         [Fact]
@@ -55,12 +70,14 @@ namespace FungiJournal.DataAccess.Test
             //arrange
             var sut = DataAccessMock.SetupMockDBContext();
 
-            //act
-            var result = sut.Database.IsInMemory();
+            using (sut)
+            {
+                //act
+                var result = sut.Database.IsInMemory();
 
-            //assert
-            result.Should().Be(true);
-            sut.DisposeAsync();
+                //assert
+                result.Should().Be(true);
+            }
         }
 
 

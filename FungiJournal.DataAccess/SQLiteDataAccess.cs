@@ -21,39 +21,43 @@ namespace FungiJournal.DataAccess
             this.codeFirstDbContext = codeFirstDbContext;
         }
 
-        public async Task<List<Entry>> GetEntries()
+        public async Task<List<Entry>> GetEntriesAsync()
         {
-            var output = await codeFirstDbContext.Entries.ToListAsync();
-            return output;
-        }
-
-        public async Task<Entry> GetEntry(int id)
-        {
-            var output = await codeFirstDbContext.Entries.FindAsync(id);
+            var output = await codeFirstDbContext.Entries!.ToListAsync();
 
             return output;
         }
 
-        public async void AddEntry(Entry entry)
+        public async Task<Entry> GetEntryAsync(int id)
+        {
+            var output = await codeFirstDbContext.Entries!.FindAsync(id);
+
+            return output!;
+        }
+
+        public Task<int> AddEntryAsync(Entry entry)
         {
             codeFirstDbContext.Entries?.Add(entry);
+            return codeFirstDbContext.SaveChangesAsync();
+        }
+
+        public async Task DeleteEntryAsync(int id)
+        {
+            codeFirstDbContext.Entries?.Remove(await GetEntryAsync(id));
+
             await codeFirstDbContext.SaveChangesAsync();
         }
 
-        public async void DeleteEntry(int id)
+        public Task DeleteEntryAsync(Entry entry)
         {
-            codeFirstDbContext.Entries?.Remove(await GetEntry(id));
-            await codeFirstDbContext.SaveChangesAsync();
+            codeFirstDbContext.Entries?.Remove(entry);
+            return codeFirstDbContext.SaveChangesAsync();
         }
 
         public void Dispose()
         {
             codeFirstDbContext.Dispose();
-        }
-
-        public void DisposeAsync()
-        {
-            codeFirstDbContext.DisposeAsync();
+            GC.SuppressFinalize(this);
         }
     }
 }

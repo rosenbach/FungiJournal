@@ -13,7 +13,7 @@ namespace FungiJournal.DataAccess.Test
     {
         public static Entry CreateMockEntry()
         {
-            Random rdm = new Random();
+            Random rdm = new();
             return new Entry { EntryId = rdm.Next(), Description = "Mock Entry" };
         }
 

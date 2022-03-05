@@ -25,13 +25,6 @@ namespace FungiJournal.DataAccess
         public DbSet<Fungi>? Fungis => this.Set<Fungi>();
         public DbSet<Entry>? Entries => this.Set<Entry>();
 
-        //TODO: do we still need this?
-        public List<Entry> GetEntries()
-        {
-            return Entries?.ToList() ?? new List<Entry>();
-        }
-
-
         #region Fluent API configuration
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
