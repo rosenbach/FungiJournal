@@ -25,7 +25,6 @@ namespace FungiJournal.DataAccess.Test
             result.Should().BeEquivalentTo(
                 new[] { mockEntry },
                 options => options.Excluding(x => x.EntryId));
-
         }
 
 
@@ -53,7 +52,6 @@ namespace FungiJournal.DataAccess.Test
 
             //assert
             entries.Should().BeEquivalentTo(expected);
-
         }
 
         [Fact]
@@ -67,7 +65,6 @@ namespace FungiJournal.DataAccess.Test
 
             //assert
             result.Should().Be(true);
-
         }
 
 
