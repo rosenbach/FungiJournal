@@ -49,5 +49,18 @@ namespace FungiJournal.DataAccess
             codeFirstDbContext.Dispose();
             GC.SuppressFinalize(this);
         }
+
+        public Task UpdateEntryAsync(int id, Entry entry)
+        {
+            codeFirstDbContext.Entry(entry).State = EntityState.Modified;
+            try
+            {
+                return codeFirstDbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                throw;
+            }
+        }
     }
 }
