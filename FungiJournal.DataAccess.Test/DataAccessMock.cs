@@ -17,7 +17,7 @@ namespace FungiJournal.DataAccess.Test
             return new Entry { EntryId = rdm.Next(), Description = "Mock Entry" };
         }
 
-        public static CodeFirstDbContext SetupMockDBContext()
+        public static CodeFirstDbContext CreateMockDBContext()
         {
             var options = Options.Create(new DataAccessConfiguration { UseInMemoryDatabase = true });
             var dbContextOptions = new DbContextOptionsBuilder<CodeFirstDbContext>().Options;
