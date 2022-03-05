@@ -12,6 +12,6 @@ namespace FungiJournal.DataAccess
         Task<List<Entry>> GetEntriesAsync();
         Task<Entry> GetEntryAsync(int id);
         Task<int> AddEntryAsync(Entry entry);
-        Task DeleteEntryAsync(int id);
+        Task DeleteEntryAsync(Entry entry);
     }
 }

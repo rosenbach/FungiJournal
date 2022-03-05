@@ -42,7 +42,7 @@ namespace FungiJournal.API.Controllers
             }
             else
             {
-                await dataAccess.DeleteEntryAsync(id);
+                await dataAccess.DeleteEntryAsync(entryToDelete);
             }
             return Ok(entryToDelete);
         }

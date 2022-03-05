@@ -21,17 +21,14 @@ namespace FungiJournal.DataAccess
             this.codeFirstDbContext = codeFirstDbContext;
         }
 
-        public async Task<List<Entry>> GetEntriesAsync()
+        public Task<List<Entry>> GetEntriesAsync()
         {
-            var output = await codeFirstDbContext.Entries!.ToListAsync();
-
-            return output;
+            return codeFirstDbContext.Entries!.ToListAsync();
         }
 
         public async Task<Entry> GetEntryAsync(int id)
         {
             var output = await codeFirstDbContext.Entries!.FindAsync(id);
-
             return output!;
         }
 
@@ -39,13 +36,6 @@ namespace FungiJournal.DataAccess
         {
             codeFirstDbContext.Entries?.Add(entry);
             return codeFirstDbContext.SaveChangesAsync();
-        }
-
-        public async Task DeleteEntryAsync(int id)
-        {
-            codeFirstDbContext.Entries?.Remove(await GetEntryAsync(id));
-
-            await codeFirstDbContext.SaveChangesAsync();
         }
 
         public Task DeleteEntryAsync(Entry entry)
