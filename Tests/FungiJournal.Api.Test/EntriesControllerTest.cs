@@ -7,25 +7,32 @@ using FungiJournal.DataAccess;
 using FungiJournal.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using FungiJournal.DataAccess.Test;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace FungiJournal.Api.Test
 {
     public class EntriesControllerTest
     {
         [Fact]
-        public void TestIfPostWasSuccessful()
+        public async Task TestIfPostWasSuccessful()
         {
             //arrange
             var sqLiteDataAccess = new SQLiteDataAccess(DataAccessMock.CreateMockDBContext());
-            //TODO shouldn't this use a Mock controller?
             var sut = new EntriesController(sqLiteDataAccess);
             Entry mockEntry = DataAccessMock.CreateMockEntry();
 
             //act
-            var result = sut.PostEntry(mockEntry);
+            var result = await sut.PostEntry(mockEntry);
 
             //assert
-            result.Should().BeEquivalentTo(new ActionResult<Entry>(new OkObjectResult(mockEntry)));
+            result.Should().BeOfType<CreatedAtActionResult>();
+            var entries = await sqLiteDataAccess.GetEntriesAsync();
+            entries.Should().ContainSingle();
+            var resultFromDatabase = entries.Single();
+            var typedResult = result as CreatedAtActionResult;
+            typedResult?.Value.Should().BeEquivalentTo(resultFromDatabase);
+            resultFromDatabase.EntryId.Should().NotBe(0);
         }
     }
 }
