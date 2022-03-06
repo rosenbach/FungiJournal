@@ -38,7 +38,7 @@ namespace FungiJournal.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Entry>> DeleteEntry(int id)
+        public async Task<IActionResult> DeleteEntry(int id)
         {
             Entry entryToDelete = await dataAccess.GetEntryAsync(id);
 
