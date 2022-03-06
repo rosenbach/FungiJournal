@@ -3,30 +3,23 @@ using FluentAssertions;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using FungiJournal.Domain.Models;
+using System;
+using System.Threading.Tasks;
 
 namespace FungiJournal.DataAccess.Test
 {
     public class SQLiteDataAccessTest
     {
-        //create SQLite inMemory database
-
         [Fact]
-        public void TestIfEntryWasAdded()
+        public async Task TestIfEntryWasAdded()
         {
             //arrange
-            //open the connection to the cnn
-            var options = Options.Create(new DataAccessConfiguration { UseInMemoryDatabase = true });
-
-            var dbContextOptions = new DbContextOptionsBuilder<CodeFirstDbContext>().Options;
-
-            var dbContext = new CodeFirstDbContext(dbContextOptions, options);
-            var sut = new SQLiteDataAccess(dbContext);
-
-            Entry mockEntry = CreateMockEntry();
+            using var sut = new SQLiteDataAccess(DataAccessMock.CreateMockDBContext());
+            Entry mockEntry = DataAccessMock.CreateMockEntry();
 
             //act
-            sut.AddEntry(mockEntry);
-            var result = sut.LoadEntries();
+            await sut.AddEntryAsync(mockEntry);
+            var result = await sut.GetEntriesAsync();
 
             //assert
             result.Should().BeEquivalentTo(
@@ -34,24 +27,75 @@ namespace FungiJournal.DataAccess.Test
                 options => options.Excluding(x => x.EntryId));
         }
 
+
+        [Fact]
+        public async Task TestIfEntryWasDeletedAsync()
+        {
+            //arrange
+            using var sut = new SQLiteDataAccess(DataAccessMock.CreateMockDBContext());
+
+            Entry mockEntry = DataAccessMock.CreateMockEntry();
+            Entry mockEntry_toDelete = DataAccessMock.CreateMockEntry();
+            await sut.AddEntryAsync(mockEntry);
+            await sut.AddEntryAsync(mockEntry_toDelete);
+
+            var expected = new[] {
+                new Entry {
+                    EntryId = mockEntry.EntryId,
+                    Description = mockEntry.Description
+                }
+            };
+
+            //act
+            await sut.DeleteEntryAsync(mockEntry_toDelete);
+            var entries = await sut.GetEntriesAsync();
+
+            //assert
+            entries.Should().BeEquivalentTo(expected);
+        }
+
         [Fact]
         public void TestIfDatabaseIsInMemory()
         {
             //arrange
-            var options = Options.Create(new DataAccessConfiguration { UseInMemoryDatabase = true });
-            var dbContextOptions = new DbContextOptionsBuilder<CodeFirstDbContext>().Options;
+            using var sut = DataAccessMock.CreateMockDBContext();
 
             //act
-            var sut = new CodeFirstDbContext(dbContextOptions, options);
             var result = sut.Database.IsInMemory();
 
             //assert
             result.Should().Be(true);
         }
 
-        private Entry CreateMockEntry()
+        
+        [Fact]
+        public async Task TestIfEntryWasUpdated()
         {
-            return new Entry { EntryId = 1, Description = "Mock Entry" };
+            //arrange
+            using var sut = new SQLiteDataAccess(DataAccessMock.CreateMockDBContext());
+
+            var mockEntry = DataAccessMock.CreateMockEntry();
+
+            await sut.AddEntryAsync(mockEntry);
+
+            mockEntry.Description = "Mocki Mock";
+
+            var expected = new[] {
+                new Entry {
+                    EntryId = mockEntry.EntryId,
+                    Description = "Mocki Mock"
+                }
+            };
+
+            //act
+            await sut.UpdateEntryAsync(mockEntry);
+
+            var entries = await sut.GetEntriesAsync();
+
+            //assert
+            entries.Should().BeEquivalentTo(expected);
         }
+        
+
     }
 }

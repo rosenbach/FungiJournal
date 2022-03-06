@@ -25,12 +25,6 @@ namespace FungiJournal.DataAccess
         public DbSet<Fungi>? Fungis => this.Set<Fungi>();
         public DbSet<Entry>? Entries => this.Set<Entry>();
 
-        public List<Entry> LoadEntries()
-        {
-            return Entries?.ToList() ?? new List<Entry>();
-        }
-
-
         #region Fluent API configuration
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -46,7 +40,7 @@ namespace FungiJournal.DataAccess
         {
             if (dataAccessConfiguration.UseInMemoryDatabase)
             {
-                optionsBuilder.UseInMemoryDatabase("Test");
+                optionsBuilder.UseInMemoryDatabase(Guid.NewGuid().ToString());
             }
             else
             {

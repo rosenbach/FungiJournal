@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Dapper;
 using FungiJournal.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
 namespace FungiJournal.DataAccess
@@ -20,29 +21,46 @@ namespace FungiJournal.DataAccess
             this.codeFirstDbContext = codeFirstDbContext;
         }
 
-        public List<Entry> LoadEntries()
+        public Task<List<Entry>> GetEntriesAsync()
         {
-            var output = codeFirstDbContext.Entries?.ToList();
-
-            return output?.ToList() ?? new List<Entry>();
+            return codeFirstDbContext.Entries!.ToListAsync();
         }
 
-        public Entry GetById(int id)
+        public async Task<Entry> GetEntryAsync(int id)
         {
-            var output = codeFirstDbContext.Entries?.Find(id);
-
-            return output;
+            var output = await codeFirstDbContext.Entries!.FindAsync(id);
+            return output!;
         }
 
-        public void AddEntry(Entry entry)
+        public Task<int> AddEntryAsync(Entry entry)
         {
             codeFirstDbContext.Entries?.Add(entry);
-            codeFirstDbContext.SaveChanges();
+            return codeFirstDbContext.SaveChangesAsync();
+        }
+
+        public Task DeleteEntryAsync(Entry entry)
+        {
+            codeFirstDbContext.Entries?.Remove(entry);
+            return codeFirstDbContext.SaveChangesAsync();
         }
 
         public void Dispose()
         {
             codeFirstDbContext.Dispose();
+            GC.SuppressFinalize(this);
+        }
+
+        public Task UpdateEntryAsync(Entry entry)
+        {
+            codeFirstDbContext.Entry(entry).State = EntityState.Modified;
+            try
+            {
+                return codeFirstDbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                throw;
+            }
         }
     }
 }

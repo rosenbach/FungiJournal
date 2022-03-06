@@ -6,6 +6,7 @@ using FungiJournal.API.Controllers;
 using FungiJournal.DataAccess;
 using FungiJournal.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
+using FungiJournal.DataAccess.Test;
 
 namespace FungiJournal.Api.Test
 {
@@ -15,15 +16,10 @@ namespace FungiJournal.Api.Test
         public void TestIfPostWasSuccessful()
         {
             //arrange
-            //open the connection to the cnn
-            var options = Options.Create(new DataAccessConfiguration { ConnectionString = "TestDB" });
-            var dbContextOptions = new DbContextOptionsBuilder<CodeFirstDbContext>()
-                .UseInMemoryDatabase("123").Options;
-            var dbContext = new CodeFirstDbContext(dbContextOptions, options);
-            var sqLiteDataAccess = new SQLiteDataAccess(dbContext);
+            var sqLiteDataAccess = new SQLiteDataAccess(DataAccessMock.CreateMockDBContext());
+            //TODO shouldn't this use a Mock controller?
             var sut = new EntriesController(sqLiteDataAccess);
-
-            Entry mockEntry = new Entry { EntryId = 1, Description = "Hello" };
+            Entry mockEntry = DataAccessMock.CreateMockEntry();
 
             //act
             var result = sut.PostEntry(mockEntry);
