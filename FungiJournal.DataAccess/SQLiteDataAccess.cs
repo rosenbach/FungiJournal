@@ -50,7 +50,7 @@ namespace FungiJournal.DataAccess
             GC.SuppressFinalize(this);
         }
 
-        public Task UpdateEntryAsync(int id, Entry entry)
+        public Task UpdateEntryAsync(Entry entry)
         {
             codeFirstDbContext.Entry(entry).State = EntityState.Modified;
             try

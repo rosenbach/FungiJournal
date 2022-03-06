@@ -40,7 +40,7 @@ namespace FungiJournal.DataAccess
         {
             if (dataAccessConfiguration.UseInMemoryDatabase)
             {
-                optionsBuilder.UseInMemoryDatabase("Test");
+                optionsBuilder.UseInMemoryDatabase(Guid.NewGuid().ToString());
             }
             else
             {

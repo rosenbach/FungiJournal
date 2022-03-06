@@ -57,7 +57,7 @@ namespace FungiJournal.API.Controllers
             }
             else
             {
-                await dataAccess.UpdateEntryAsync(id, entry);
+                await dataAccess.UpdateEntryAsync(entry);
             }
             return NoContent();
         }

@@ -14,7 +14,7 @@ namespace FungiJournal.DataAccess.Test
         public async Task TestIfEntryWasAdded()
         {
             //arrange
-            using var sut = new SQLiteDataAccess(DataAccessMock.SetupMockDBContext());
+            using var sut = new SQLiteDataAccess(DataAccessMock.CreateMockDBContext());
             Entry mockEntry = DataAccessMock.CreateMockEntry();
 
             //act
@@ -32,7 +32,7 @@ namespace FungiJournal.DataAccess.Test
         public async Task TestIfEntryWasDeletedAsync()
         {
             //arrange
-            using var sut = new SQLiteDataAccess(DataAccessMock.SetupMockDBContext());
+            using var sut = new SQLiteDataAccess(DataAccessMock.CreateMockDBContext());
 
             Entry mockEntry = DataAccessMock.CreateMockEntry();
             Entry mockEntry_toDelete = DataAccessMock.CreateMockEntry();
@@ -58,7 +58,7 @@ namespace FungiJournal.DataAccess.Test
         public void TestIfDatabaseIsInMemory()
         {
             //arrange
-            using var sut = DataAccessMock.SetupMockDBContext();
+            using var sut = DataAccessMock.CreateMockDBContext();
 
             //act
             var result = sut.Database.IsInMemory();
@@ -67,7 +67,35 @@ namespace FungiJournal.DataAccess.Test
             result.Should().Be(true);
         }
 
+        
+        [Fact]
+        public async Task TestIfEntryWasUpdated()
+        {
+            //arrange
+            using var sut = new SQLiteDataAccess(DataAccessMock.CreateMockDBContext());
 
+            var mockEntry = DataAccessMock.CreateMockEntry();
+
+            await sut.AddEntryAsync(mockEntry);
+
+            mockEntry.Description = "Mocki Mock";
+
+            var expected = new[] {
+                new Entry {
+                    EntryId = mockEntry.EntryId,
+                    Description = "Mocki Mock"
+                }
+            };
+
+            //act
+            await sut.UpdateEntryAsync(mockEntry);
+
+            var entries = await sut.GetEntriesAsync();
+
+            //assert
+            entries.Should().BeEquivalentTo(expected);
+        }
+        
 
     }
 }

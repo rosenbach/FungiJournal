@@ -16,7 +16,7 @@ namespace FungiJournal.Api.Test
         public void TestIfPostWasSuccessful()
         {
             //arrange
-            var sqLiteDataAccess = new SQLiteDataAccess(DataAccessMock.SetupMockDBContext());
+            var sqLiteDataAccess = new SQLiteDataAccess(DataAccessMock.CreateMockDBContext());
             //TODO shouldn't this use a Mock controller?
             var sut = new EntriesController(sqLiteDataAccess);
             Entry mockEntry = DataAccessMock.CreateMockEntry();
