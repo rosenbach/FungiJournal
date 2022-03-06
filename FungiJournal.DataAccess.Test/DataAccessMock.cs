@@ -13,8 +13,7 @@ namespace FungiJournal.DataAccess.Test
     {
         public static Entry CreateMockEntry()
         {
-            Random rdm = new();
-            return new Entry { EntryId = rdm.Next(), Description = "Mock Entry" };
+            return new Entry { Description = "Mock Entry" };
         }
 
         public static CodeFirstDbContext CreateMockDBContext()
