@@ -18,7 +18,22 @@ namespace FungiJournal.Api.Test
         [Fact]
         public async Task TestIfGetByIdWasSuccessful()
         {
+            //arrange
+            var sqLiteDataAccess = new SQLiteDataAccess(DataAccessMock.CreateMockDBContext());
+            var sut = new EntriesController(sqLiteDataAccess);
+            Entry mockEntry = DataAccessMock.CreateMockEntry();
+            await sut.PostEntry(mockEntry);
+            var expected = mockEntry;
 
+            //act
+            var result = await sut.GetById(mockEntry.EntryId);
+
+            //assert
+            result.Should().BeOfType<OkObjectResult>();
+            var typedResult = result as OkObjectResult;
+
+            var entries = typedResult?.Value;
+            entries.Should().BeEquivalentTo(expected);
         }
 
         [Fact]
