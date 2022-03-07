@@ -26,6 +26,11 @@ namespace FungiJournal.DataAccess
             return codeFirstDbContext.Entries!.ToListAsync();
         }
 
+        public DbSet<Entry> GetEntries()
+        {
+            return codeFirstDbContext.Entries!;
+        }
+
         public async Task<Entry> GetEntryAsync(int id)
         {
             var output = await codeFirstDbContext.Entries!.FindAsync(id);
@@ -62,5 +67,7 @@ namespace FungiJournal.DataAccess
                 throw;
             }
         }
+
+
     }
 }
