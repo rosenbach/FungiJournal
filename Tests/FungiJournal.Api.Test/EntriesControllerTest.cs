@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using FungiJournal.DataAccess.Test;
 using System.Threading.Tasks;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace FungiJournal.Api.Test
 {
@@ -64,9 +65,11 @@ namespace FungiJournal.Api.Test
 
             //assert
             result.Should().BeOfType<OkObjectResult>();
-            var entries = await sqLiteDataAccess.GetEntriesAsync();
+            var entriesResponse = await sut.GetAll() as OkObjectResult;
+            var entries = entriesResponse?.Value as List<Entry>;
+            //var entries = await sqLiteDataAccess.GetEntriesAsync();
             entries.Should().ContainSingle();
-            var resultFromDatabase = entries.Single();
+            var resultFromDatabase = entries?.Single();
             resultFromDatabase?.EntryId.Should().Be(mockEntry.EntryId);
             resultFromDatabase?.EntryId.Should().NotBe(mockEntryToBeDeleted.EntryId);
 
