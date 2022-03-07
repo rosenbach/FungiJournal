@@ -23,7 +23,29 @@ namespace FungiJournal.Api.Test
         [Fact]
         public async Task TestIfGetAllWasSuccessful()
         {
+            //arrange
+            var sqLiteDataAccess = new SQLiteDataAccess(DataAccessMock.CreateMockDBContext());
+            var sut = new EntriesController(sqLiteDataAccess);
+            Entry mockEntry = DataAccessMock.CreateMockEntry();
+            Entry mockEntry2 = DataAccessMock.CreateMockEntry();
+            await sut.PostEntry(mockEntry);
+            await sut.PostEntry(mockEntry2);
+            var expected = new[]
+            {
+                mockEntry,
+                mockEntry2
+            };
 
+            //act
+            var result = await sut.GetAll();
+
+            //assert
+            result.Should().BeOfType<OkObjectResult>();
+            var typedResult = result as OkObjectResult;
+
+            var entries = typedResult?.Value;
+            entries.Should().BeEquivalentTo(expected);
+            
         }
 
         [Fact]
