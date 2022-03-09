@@ -18,9 +18,12 @@ namespace FungiJournal.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll([FromQuery] QueryParameters queryParameters)
+        public async Task<IActionResult> GetAll([FromQuery] EntryQueryParameters queryParameters)
         {
             IQueryable<Entry> entries = dataAccess.GetEntries();
+
+
+
             entries = entries
                 .Skip(queryParameters.Size * (queryParameters.Page - 1))
                 .Take(queryParameters.Size);
