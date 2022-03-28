@@ -12,11 +12,23 @@ namespace FungiJournal.Domain.Models
     {
         [Key] [Required]
         public int EntryId { get; set; }
-        public DateTime? Timestamp { get; set; }
+        public DateTime? CreatedAt { get; set; }
+        public DateTime? LastModified { get; set; }
 
         [ForeignKey("FungiId")]
         public int? FungiId { get; set; }
         public Fungi? Fungi { get; set; }
         public string? Description { get; set; }
+
+        public void UpdateTimestamp()
+        {
+            LastModified = DateTime.Now;
+        }
+
+        public void GenerateCreationDate()
+        {
+            CreatedAt = DateTime.Now;
+            LastModified = CreatedAt;
+        }
     }
 }

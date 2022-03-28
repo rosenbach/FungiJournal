@@ -77,7 +77,7 @@ namespace FungiJournal.Api.Test
             await sut.PostEntry(mockEntry);
             await sut.PostEntry(mockEntry2);
 
-            EntryQueryParameters queryParameters = new EntryQueryParameters();
+            EntryQueryParameters queryParameters = new();
             int idToSearchFor = mockEntry2.EntryId;
             queryParameters.EntryId = idToSearchFor;
 
@@ -114,7 +114,7 @@ namespace FungiJournal.Api.Test
             await sut.PostEntry(mockEntry);
             await sut.PostEntry(mockEntry2);
 
-            EntryQueryParameters queryParameters = new EntryQueryParameters();
+            EntryQueryParameters queryParameters = new();
             queryParameters.Description = DescriptionToSearchFor;
 
             var expected = new[]
