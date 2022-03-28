@@ -24,9 +24,14 @@ namespace FungiJournal.API.Controllers
 
             if (queryParameters.HasEntryId())
             {
-                //do query for id
                 entries = entries
                     .Where(e => e.EntryId == queryParameters.EntryId);
+            }
+
+            if (!string.IsNullOrEmpty(queryParameters.Description))
+            {
+                entries = entries
+                    .Where(e => e.Description.Contains(queryParameters.Description));
             }
 
             entries = entries
