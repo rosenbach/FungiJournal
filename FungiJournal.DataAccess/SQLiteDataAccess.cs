@@ -39,6 +39,7 @@ namespace FungiJournal.DataAccess
 
         public Task<int> AddEntryAsync(Entry entry)
         {
+            entry.GenerateCreationDate();
             codeFirstDbContext.Entries?.Add(entry);
             return codeFirstDbContext.SaveChangesAsync();
         }
@@ -60,6 +61,7 @@ namespace FungiJournal.DataAccess
             codeFirstDbContext.Entry(entry).State = EntityState.Modified;
             try
             {
+                entry.UpdateTimestamp();
                 return codeFirstDbContext.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)

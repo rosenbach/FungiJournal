@@ -19,5 +19,16 @@ namespace FungiJournal.Domain.Models
         public int? FungiId { get; set; }
         public Fungi? Fungi { get; set; }
         public string? Description { get; set; }
+
+        public void UpdateTimestamp()
+        {
+            LastModified = DateTime.Now;
+        }
+
+        public void GenerateCreationDate()
+        {
+            CreatedAt = DateTime.Now;
+            LastModified = CreatedAt;
+        }
     }
 }
