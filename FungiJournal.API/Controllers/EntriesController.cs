@@ -22,7 +22,12 @@ namespace FungiJournal.API.Controllers
         {
             IQueryable<Entry> entries = dataAccess.GetEntries();
 
-
+            if (queryParameters.HasEntryId())
+            {
+                //do query for id
+                entries = entries
+                    .Where(e => e.EntryId == queryParameters.EntryId);
+            }
 
             entries = entries
                 .Skip(queryParameters.Size * (queryParameters.Page - 1))

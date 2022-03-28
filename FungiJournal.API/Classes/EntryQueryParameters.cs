@@ -2,8 +2,14 @@
 {
     public class EntryQueryParameters : QueryParameters
     {
-        public String Name { get; set; }
-        public String LatinName { get; set; }
-        public bool IsToxic { get; set; }
+        public int EntryId { get; set; }
+        public String Description { get; set; }
+        public int FungiId { get; set; }
+
+
+        public Boolean HasEntryId()
+        {
+            return EntryId != 0;
+        }
     }
 }
