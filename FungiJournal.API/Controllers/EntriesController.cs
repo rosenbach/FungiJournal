@@ -1,7 +1,9 @@
-﻿using FungiJournal.DataAccess;
+﻿using FungiJournal.API.Classes;
+using FungiJournal.DataAccess;
 using FungiJournal.Domain.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace FungiJournal.API.Controllers
 {
@@ -16,6 +18,29 @@ namespace FungiJournal.API.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> GetAll([FromQuery] EntryQueryParameters queryParameters)
+        {
+            IQueryable<Entry> entries = dataAccess.GetEntries();
+
+            if (queryParameters.HasEntryId())
+            {
+                entries = entries
+                    .Where(e => e.EntryId == queryParameters.EntryId);
+            }
+
+            if (!string.IsNullOrEmpty(queryParameters.Description))
+            {
+                entries = entries
+                    .Where(e => e.Description.Contains(queryParameters.Description));
+            }
+
+            entries = entries
+                .Skip(queryParameters.Size * (queryParameters.Page - 1))
+                .Take(queryParameters.Size);
+
+            return Ok(await entries.ToArrayAsync());
+        }
+
         public async Task<IActionResult> GetAll()
         {
             return Ok(await dataAccess.GetEntriesAsync());
