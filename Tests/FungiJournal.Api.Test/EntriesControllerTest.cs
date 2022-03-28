@@ -66,7 +66,7 @@ namespace FungiJournal.Api.Test
         }
 
         [Fact]
-        public async Task TestIfGetAllByQueryWasSuccessful()
+        public async Task TestIfGetAllByEntryIdQueryWasSuccessful()
         {
             //arrange
             var sqLiteDataAccess = new SQLiteDataAccess(DataAccessMock.CreateMockDBContext());
@@ -80,6 +80,42 @@ namespace FungiJournal.Api.Test
             EntryQueryParameters queryParameters = new EntryQueryParameters();
             int idToSearchFor = mockEntry2.EntryId;
             queryParameters.EntryId = idToSearchFor;
+
+            var expected = new[]
+            {
+                mockEntry2
+            };
+
+
+            //act
+            var result = await sut.GetAll(queryParameters);
+
+            //assert
+            result.Should().BeOfType<OkObjectResult>();
+            var typedResult = result as OkObjectResult;
+
+            var entries = typedResult?.Value;
+            entries.Should().BeEquivalentTo(expected);
+
+        }
+
+        [Fact]
+        public async Task TestIfGetAllByDescriptionQueryWasSuccessful()
+        {
+            //arrange
+            var sqLiteDataAccess = new SQLiteDataAccess(DataAccessMock.CreateMockDBContext());
+            var sut = new EntriesController(sqLiteDataAccess);
+            Entry mockEntry = DataAccessMock.CreateMockEntry();
+            Entry mockEntry2 = DataAccessMock.CreateMockEntry();
+            string DescriptionToSearchFor = "TestDescr";
+
+            mockEntry2.Description = DescriptionToSearchFor;
+
+            await sut.PostEntry(mockEntry);
+            await sut.PostEntry(mockEntry2);
+
+            EntryQueryParameters queryParameters = new EntryQueryParameters();
+            queryParameters.Description = DescriptionToSearchFor;
 
             var expected = new[]
             {
