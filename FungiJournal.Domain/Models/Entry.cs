@@ -12,8 +12,8 @@ namespace FungiJournal.Domain.Models
     {
         [Key] [Required]
         public int EntryId { get; set; }
-        public DateTime? CreatedAt { get; set; }
-        public DateTime? LastModified { get; set; }
+        public DateTime? CreatedAt { get; private set; }
+        public DateTime? LastModified { get; private set; }
 
         [ForeignKey("FungiId")]
         public int? FungiId { get; set; }
