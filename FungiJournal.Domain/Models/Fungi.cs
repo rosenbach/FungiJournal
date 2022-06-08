@@ -14,5 +14,8 @@ namespace FungiJournal.Domain.Models
         public string? Name { get; set; }
         public string? LatinName { get; set; }
         public bool? IsToxic { get; set; }
+        public string? Occurence { get; set; }
+        public string? Season { get; set; }
+        public int? FoodValue { get; set; }
     }
 }
