@@ -8,9 +8,23 @@ using FungiJournal.Domain.Models;
 
 namespace FungiJournal.DataAccess.Importer
 {
-    public static class FungiImporter
+    public class FungiImporter : IFungiImporter
     {
-        public static List<Fungi> Read(string path)
+        public void ImportFungi(Fungi fungi)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ImportFungis(string path)
+        {
+            List<Fungi> fungis = Read(path);
+            for (int i = 0; i < fungis.Count; i++)
+            {
+                ImportFungi(fungis[i]);
+            }
+        }
+
+        public List<Fungi> Read(string path)
         {
             try
             {

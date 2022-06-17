@@ -19,7 +19,8 @@ namespace FungiJournal.DataAccess.Test
             //first fungi: "Birkenrotkappe, Heiderotkappe, Schwarzschuppiger Birkenröhrling"
 
             //arrange
-            List<Fungi> importedFungis = FungiImporter.Read(@"C:\Users\m_kae\source\repos\FungiJournal\FungiJournal.DataAccess\Importer\pilze_small.txt");
+            FungiImporter fungiImporter = new();
+            List<Fungi> importedFungis = fungiImporter.Read(@"C:\Users\m_kae\source\repos\FungiJournal\FungiJournal.DataAccess\Importer\pilze_small.txt");
 
             //act
             var result = importedFungis[0].Name;
@@ -31,16 +32,34 @@ namespace FungiJournal.DataAccess.Test
         [Fact]
         public void TestIfAllEntriesAreRead()
         {
-            //file contains 58 entries
+            //file contains 48 entries
 
             //arrange
-            List<Fungi> importedFungis = FungiImporter.Read(@"C:\Users\m_kae\source\repos\FungiJournal\FungiJournal.DataAccess\Importer\pilze_small.txt");
+            FungiImporter fungiImporter = new();
+            List<Fungi> importedFungis = fungiImporter.Read(@"C:\Users\m_kae\source\repos\FungiJournal\FungiJournal.DataAccess\Importer\pilze_small.txt");
 
             //act
             var result = importedFungis.Count;
 
             //assert
-            result.Should().Be(58);
+            result.Should().Be(48);
+        }
+        
+        [Fact]
+        public async Task TestIfFungiWasAdded()
+        {
+            //arrange
+            using var sut = new SQLiteDataAccess(DataAccessMock.CreateMockDBContext());
+            Fungi mockFungi = DataAccessMock.CreateMockFungi();
+
+            //act
+            await sut.AddFungiAsync(mockFungi);
+            var result = await sut.GetFungisAsync();
+
+            //assert
+            result.Should().BeEquivalentTo(
+                new[] { mockFungi }
+                );
         }
     }
 

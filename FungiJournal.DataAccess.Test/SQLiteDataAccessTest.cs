@@ -27,7 +27,6 @@ namespace FungiJournal.DataAccess.Test
                 options => options.Excluding(x => x.EntryId));
         }
 
-
         [Fact]
         public async Task TestIfEntryWasDeletedAsync()
         {
@@ -51,7 +50,11 @@ namespace FungiJournal.DataAccess.Test
             var entries = await sut.GetEntriesAsync();
 
             //assert
-            entries.Should().BeEquivalentTo(expected);
+            entries.Should().BeEquivalentTo(expected, options =>
+                options
+                .Excluding(e => e.CreatedAt)
+                .Excluding(e=>e.LastModified));
+
         }
 
         [Fact]
@@ -67,7 +70,6 @@ namespace FungiJournal.DataAccess.Test
             result.Should().Be(true);
         }
 
-        
         [Fact]
         public async Task TestIfEntryWasUpdated()
         {
@@ -93,9 +95,82 @@ namespace FungiJournal.DataAccess.Test
             var entries = await sut.GetEntriesAsync();
 
             //assert
-            entries.Should().BeEquivalentTo(expected);
+            entries.Should().BeEquivalentTo(expected, options =>
+                options
+                .Excluding(e => e.CreatedAt)
+                .Excluding(e => e.LastModified));
         }
-        
 
+        [Fact]
+        public async Task TestIfFungiWasAdded()
+        {
+            //arrange
+            using var sut = new SQLiteDataAccess(DataAccessMock.CreateMockDBContext());
+            Fungi mockFungi = DataAccessMock.CreateMockFungi();
+
+            //act
+            await sut.AddFungiAsync(mockFungi);
+            var result = await sut.GetFungisAsync();
+
+            //assert
+            result.Should().BeEquivalentTo(
+                new[] { mockFungi },
+                options => options.Excluding(x => x.FungiId));
+        }
+
+        [Fact]
+        public async Task TestIfFungiWasDeletedAsync()
+        {
+            //arrange
+            using var sut = new SQLiteDataAccess(DataAccessMock.CreateMockDBContext());
+
+            Fungi mockFungi = DataAccessMock.CreateMockFungi();
+            Fungi mockFungi_toDelete = DataAccessMock.CreateMockFungi();
+            await sut.AddFungiAsync(mockFungi);
+            await sut.AddFungiAsync(mockFungi_toDelete);
+
+            var expected = new[] {
+                new Fungi {
+                    FungiId = mockFungi.FungiId,
+                    Name = mockFungi.Name
+                }
+            };
+
+            //act
+            await sut.DeleteFungiAsync(mockFungi_toDelete);
+            var fungis = await sut.GetFungisAsync();
+
+            //assert
+            fungis.Should().BeEquivalentTo(expected);
+
+        }
+
+        [Fact]
+        public async Task TestIfFungiWasUpdated()
+        {
+            //arrange
+            using var sut = new SQLiteDataAccess(DataAccessMock.CreateMockDBContext());
+
+            var mockFungi = DataAccessMock.CreateMockFungi();
+
+            await sut.AddFungiAsync(mockFungi);
+
+            mockFungi.Name = "Mocki Mock";
+
+            var expected = new[] {
+                new Fungi {
+                    FungiId = mockFungi.FungiId,
+                    Name = "Mocki Mock"
+                }
+            };
+
+            //act
+            await sut.UpdateFungiAsync(mockFungi);
+
+            var fungis = await sut.GetFungisAsync();
+
+            //assert
+            fungis.Should().BeEquivalentTo(expected);
+        }
     }
 }
