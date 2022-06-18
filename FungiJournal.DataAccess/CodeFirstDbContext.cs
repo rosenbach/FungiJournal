@@ -31,7 +31,6 @@ namespace FungiJournal.DataAccess
         {
             modelBuilder.Entity<Entry>()
                 .HasOne(e => e.Fungi);
-
         }
 
         #endregion

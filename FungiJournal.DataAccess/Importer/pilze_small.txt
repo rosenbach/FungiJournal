@@ -1,49 +1,49 @@
 Name	Latein (wissenschaftlich)	Vorkommen	Wann	Speisewert
-"Birkenrotkappe, Heiderotkappe, Schwarzschuppiger Birkenröhrling"	LECCINUM TESTACEOSCABRUM (SYN. LECCINUM VERSIPELLE)	"Birken, Symbiosepilz zur Birke."	Frühling bis Spätherbst	1
-"Espenrotkappe, Rothäubchen, Pappelrotkappe"	LECCINUM AURANTIACUM	"Zitterpappeln, Symbiosepilz zur Pappel."	Frühling bis Spätherbst	1
-"Flockenstieliger Hexenröhrling, Flocki, Zigeuner, Hexenpilz"	BOLETUS ERYTHROPUS (SYN. BOLETUS LURIDIFORMIS)	"Mischwald, saurer Boden"	Frühling bis Spätherbst	1
-"Anhängselröhrling, Gelber Steinpilz, Gelber Bronzeröhrling,Gehämmerter Röhrling"	"BOLETUS APPENDICULATUS (Buchenwald Kalk) , BOLETUS SUBAPPENDICULATUS (Falscher Anhängselröhrling - Nadelwald)"	Laubwälder	Frühsommer bis Herbst	2
-"Falscher Rotfußröhrling, Düsterner Rotfußröhrling"	XEROCOMUS POROSPORUS	"Mischwald, Symbiosepilz, sehr häufig."	Frühsommer bis Herbst	3
-"Hainbuchenröhrling, Hainbuchenraufußröhrling, Hainbuchenraufuß"	LECCINUM CARPINI	"Laubwald (Symbiosepilz), meist unter Hainbuchen"	Frühsommer bis Herbst	1
-Schmarotzerröhrling	XEROCOMUS PARASITICUS	"Er wächst meist auf dem ""Dickschaligen Kartoffelbovist"" (SCLERODERMA CITRINUM)und lässt ihn nicht zur Sporenreife gelangen, sondern zersetzt seinen Fruchtkörper"	Frühsommer bis Herbst	2
-"Vielverfärbender Birkenpilz, Blauverfärbender Birkenpilz, Verfärbender Raufußröhrling"	LECCINUM VARIICOLOR	"Laubwald, Mischwald, nur bei Birken, saurer Boden, nie kalkreicher Boden, relativ selten, Symbiosepilz (Mykorrhizapartner Birke)"	Frühsommer bis Herbst	2
-"Herbstrotfußröhrling, Bereifter Rotfußröhrling, Stattlicher Rotfußröhrling, Herbstrotfuß"	BOLETUS PRUINATUS	"Mischwald, Symbiosepilz, sehr häufig"	Frühsommer bis Herbst	3
-"Rotfußröhrling, Gemeiner Rotfußröhrling, Echter Rotfußröhrling, Rotfuß"	XEROCOMUS CHRYSENTERON	"Mischwald, Symbiosepilz, sehr häufig."	Frühsommer bis Herbst	3
-"Kiefernsteinpilz, Rothütiger Steinpilz, Gemeiner Steinpilz"	BOLETUS PINOPHILUS	"Meist Kiefern, Symbiosepilz, gelegentlich aber auch bei Weißtanne und Fichte"	Frühsommer bis Spätherbst	1
-"Weißer Steinpilz, Weißer Steini"	BOLETUS EDULIS VARIETÄT ALBA	Mischwald	Frühsommer bis Spätherbst	1
-"Sommersteinpilz, Eichensteinpilz, Schwarzer Steinpilz"	"EICHENSTEINPILZ (BOLETUS RETICULATUS), SCHWARZER STEINPILZ (BOLETUS AEREUS)"	"Mischwald, gerne Fichten oder Buchen"	Frühsommer bis Spätherbst	1
-"Steinpilz, Fichtensteinpilz, Gemeiner Steinpilz"	BOLETUS EDULIS	Mischwald	Frühsommer bis Spätherbst	1
-"Pfefferröhrling, Pfeffrige Zwerg-Röhrling"	CHALCIPORUS PIPERATUS	Mischwald	Frühsommer bis Spätherbst	2
-"Blasshütiger Röhrling, Gefleckthütiger Röhrling, Marmorierter Röhrling, Gehämmerter Röhrling, Gehämmerter Steinpilz"	BOLETUS DEPILATUS	"Laubwald, gern Haibuchen, kalkreicher trockener Boden, Symbiosepilz"	Sommer bis Herbst	2
-"Blutroter Röhrling, Blutroter Filzröhrling, Blutroter Rotfußröhrling"	XEROCOMUS RUBELLUS	"Mischwald, gern Eichenbegleiter"	Sommer bis Herbst	3
-Aprikosenfarbiger Röhrling	BOLETUS ARMENIACUS	"Mischwald, wärmeliebend, in Deutschland selten, Im Mittelmeerraum häufig."	Sommer bis Herbst	3
-"Eichenfilzröhrling, Blutender Eichenröhrling"	XEROCOMUS COMMUNIS	"Laubwald: Eiche, Birke, Buche, Linde und Hainbuche = Symbiosepilz, sehr selten."	Sommer bis Herbst	3
-"Kiefernrotkappe, Fuchsrotkappe, Föhrenrotkappe, Fuchsröhrling"	LECCINUM VULPINUM	"Nadelwald, Kiefern, Föhren (Symbiosepilz)"	Sommer bis Herbst	1
-"Eichenrotkappe, Eichenraufuss"	LECCINUM QUERCINUM	Eichen-Symbiont d.h. immer Eichen in der Nähe	Sommer bis Herbst	1
-"Elfenbeinröhrling, Weymouthsröhrling"	SUILLUS PLACIDUS	Elfenbeinröhrling ist ein Mykorrhizapilz (Symbiosepilz) der Zirbelkiefer (pinus cembra) oder Weymouthskiefer (pinus strobus)	Sommer bis Herbst	1
+"Birkenrotkappe, Heiderotkappe, Schwarzschuppiger BirkenrÃ¶hrling"	LECCINUM TESTACEOSCABRUM (SYN. LECCINUM VERSIPELLE)	"Birken, Symbiosepilz zur Birke."	FrÃ¼hling bis SpÃ¤therbst	1
+"Espenrotkappe, RothÃ¤ubchen, Pappelrotkappe"	LECCINUM AURANTIACUM	"Zitterpappeln, Symbiosepilz zur Pappel."	FrÃ¼hling bis SpÃ¤therbst	1
+"Flockenstieliger HexenrÃ¶hrling, Flocki, Zigeuner, Hexenpilz"	BOLETUS ERYTHROPUS (SYN. BOLETUS LURIDIFORMIS)	"Mischwald, saurer Boden"	FrÃ¼hling bis SpÃ¤therbst	1
+"AnhÃ¤ngselrÃ¶hrling, Gelber Steinpilz, Gelber BronzerÃ¶hrling,GehÃ¤mmerter RÃ¶hrling"	"BOLETUS APPENDICULATUS (Buchenwald Kalk) , BOLETUS SUBAPPENDICULATUS (Falscher AnhÃ¤ngselrÃ¶hrling - Nadelwald)"	LaubwÃ¤lder	FrÃ¼hsommer bis Herbst	2
+"Falscher RotfuÃŸrÃ¶hrling, DÃ¼sterner RotfuÃŸrÃ¶hrling"	XEROCOMUS POROSPORUS	"Mischwald, Symbiosepilz, sehr hÃ¤ufig."	FrÃ¼hsommer bis Herbst	3
+"HainbuchenrÃ¶hrling, HainbuchenraufuÃŸrÃ¶hrling, HainbuchenraufuÃŸ"	LECCINUM CARPINI	"Laubwald (Symbiosepilz), meist unter Hainbuchen"	FrÃ¼hsommer bis Herbst	1
+SchmarotzerrÃ¶hrling	XEROCOMUS PARASITICUS	"Er wÃ¤chst meist auf dem ""Dickschaligen Kartoffelbovist"" (SCLERODERMA CITRINUM)und lÃ¤sst ihn nicht zur Sporenreife gelangen, sondern zersetzt seinen FruchtkÃ¶rper"	FrÃ¼hsommer bis Herbst	2
+"VielverfÃ¤rbender Birkenpilz, BlauverfÃ¤rbender Birkenpilz, VerfÃ¤rbender RaufuÃŸrÃ¶hrling"	LECCINUM VARIICOLOR	"Laubwald, Mischwald, nur bei Birken, saurer Boden, nie kalkreicher Boden, relativ selten, Symbiosepilz (Mykorrhizapartner Birke)"	FrÃ¼hsommer bis Herbst	2
+"HerbstrotfuÃŸrÃ¶hrling, Bereifter RotfuÃŸrÃ¶hrling, Stattlicher RotfuÃŸrÃ¶hrling, HerbstrotfuÃŸ"	BOLETUS PRUINATUS	"Mischwald, Symbiosepilz, sehr hÃ¤ufig"	FrÃ¼hsommer bis Herbst	3
+"RotfuÃŸrÃ¶hrling, Gemeiner RotfuÃŸrÃ¶hrling, Echter RotfuÃŸrÃ¶hrling, RotfuÃŸ"	XEROCOMUS CHRYSENTERON	"Mischwald, Symbiosepilz, sehr hÃ¤ufig."	FrÃ¼hsommer bis Herbst	3
+"Kiefernsteinpilz, RothÃ¼tiger Steinpilz, Gemeiner Steinpilz"	BOLETUS PINOPHILUS	"Meist Kiefern, Symbiosepilz, gelegentlich aber auch bei WeiÃŸtanne und Fichte"	FrÃ¼hsommer bis SpÃ¤therbst	1
+"WeiÃŸer Steinpilz, WeiÃŸer Steini"	BOLETUS EDULIS VARIETÃ„T ALBA	Mischwald	FrÃ¼hsommer bis SpÃ¤therbst	1
+"Sommersteinpilz, Eichensteinpilz, Schwarzer Steinpilz"	"EICHENSTEINPILZ (BOLETUS RETICULATUS), SCHWARZER STEINPILZ (BOLETUS AEREUS)"	"Mischwald, gerne Fichten oder Buchen"	FrÃ¼hsommer bis SpÃ¤therbst	1
+"Steinpilz, Fichtensteinpilz, Gemeiner Steinpilz"	BOLETUS EDULIS	Mischwald	FrÃ¼hsommer bis SpÃ¤therbst	1
+"PfefferrÃ¶hrling, Pfeffrige Zwerg-RÃ¶hrling"	CHALCIPORUS PIPERATUS	Mischwald	FrÃ¼hsommer bis SpÃ¤therbst	2
+"BlasshÃ¼tiger RÃ¶hrling, GefleckthÃ¼tiger RÃ¶hrling, Marmorierter RÃ¶hrling, GehÃ¤mmerter RÃ¶hrling, GehÃ¤mmerter Steinpilz"	BOLETUS DEPILATUS	"Laubwald, gern Haibuchen, kalkreicher trockener Boden, Symbiosepilz"	Sommer bis Herbst	2
+"Blutroter RÃ¶hrling, Blutroter FilzrÃ¶hrling, Blutroter RotfuÃŸrÃ¶hrling"	XEROCOMUS RUBELLUS	"Mischwald, gern Eichenbegleiter"	Sommer bis Herbst	3
+Aprikosenfarbiger RÃ¶hrling	BOLETUS ARMENIACUS	"Mischwald, wÃ¤rmeliebend, in Deutschland selten, Im Mittelmeerraum hÃ¤ufig."	Sommer bis Herbst	3
+"EichenfilzrÃ¶hrling, Blutender EichenrÃ¶hrling"	XEROCOMUS COMMUNIS	"Laubwald: Eiche, Birke, Buche, Linde und Hainbuche = Symbiosepilz, sehr selten."	Sommer bis Herbst	3
+"Kiefernrotkappe, Fuchsrotkappe, FÃ¶hrenrotkappe, FuchsrÃ¶hrling"	LECCINUM VULPINUM	"Nadelwald, Kiefern, FÃ¶hren (Symbiosepilz)"	Sommer bis Herbst	1
+"Eichenrotkappe, Eichenraufuss"	LECCINUM QUERCINUM	Eichen-Symbiont d.h. immer Eichen in der NÃ¤he	Sommer bis Herbst	1
+"ElfenbeinrÃ¶hrling, WeymouthsrÃ¶hrling"	SUILLUS PLACIDUS	ElfenbeinrÃ¶hrling ist ein Mykorrhizapilz (Symbiosepilz) der Zirbelkiefer (pinus cembra) oder Weymouthskiefer (pinus strobus)	Sommer bis Herbst	1
 Fichtenrotkappe	LECCINUM PICEINUM	"Fichten, Heidelbeeren (Symbiosepilz)"	Sommer bis Herbst	1
-"Gelber Hohfußröhrling, Gelber Hohlfuß"	SUILLUS CAVIPES F. AEREUS (GELBE FORM)	"Symbiosepilz unter Lärchen wachsend, vorliebend auf sauren Boden"	Sommer bis Herbst	2
-Glattstieliger Hexenröhrling	BOLETUS QUELETII	Laubwald	Sommer bis Herbst	1
-"Goldröhrling, Goldgelber Lärchenröhrling"	SUILLUS GREVILLEI	Mykorrhiza-Pilze (Symbiosepilze) mit der Lärche	Sommer bis Herbst	1
-Kornblumenröhrling	GYROPORUS CYANESCENS (GYROPORUS CYANESCENS VAR. LACTEUS)	Mischwald	Sommer bis Herbst	1
-"Körnchenröhrling, Schmerling"	SUILLUS GRANULATUS	Kiefer	Sommer bis Herbst	1
-Mährischer Filzröhrling	XEROCOMUS MORAVICUS	"Mischwald, meist Laubwald, besonders bei Eichen, Symbiosepilz"	Sommer bis Herbst	1
-"Sandröhrling, Hirsepilz"	SUILLUS VARIEGATUS	"Bei Kiefern, saurem Boden, Symbiosepilz (Mykorrhiza-begleiter der Kiefer)"	Sommer bis Herbst	1
-"Weißer Birkenpilz, Moorbirkenpilz"	"LECCINUM SCABRUM (VAR. NIVEUM, VAR. LECCINUM NUCATUM, LECCINUM HOLOPUS)"	"Birken, Symbiosepilz"	Sommer bis Herbst	1
-"Hasenröhrling, Zimtröhrling"	GYROPORUS CASTANEUS	"Laubwald, Eichen, Haselnuss"	Sommer bis Herbst	2
-"Hohlfußröhrling, Brauner Hohlfußröhrling"	SUILLUS CAVIPES  (SYN. BOLETINUS CAVIPES)	Symbiosepilz unter Lärchen wachsend	Sommer bis Herbst	2
-Moorröhrling	SUILLUS FLAVIDUS	Kiefernwald	Sommer bis Herbst	4
-"Nadelholzröhrling, Rostbrauner Goldröhrling"	PULVEROBOLETUS LIGNICOLA	Fuß von Nadelbäumen	Sommer bis Herbst	2
-"Ringloser Butterpilz, Ringlose Butterröhrling, Rosafüßige Körnchenröhrling"	"SUILLUS COLLINITUS, (SYN. SUILLUS FLURYI)"	"Kalkreicher Boden, Waldrändern, Parks, unter Kiefern ist er ein Mykorrhizapilz (Symbiosepilz), im mediterranem Raum kommt er gern unter der Aleppo-Kiefer (Pinus halepensis) vor"	Sommer bis Herbst	4
-"Schwarzblauender Röhrling, Blaufärbender Röhrling"	BOLETUS PULVERULENTUS	Mischwald	Sommer bis Herbst	2
-"Weißbrauner Schmierröhrling, Kleinsporiger Kiefernröhrling"	"SUILLUS BELLINII (SYN. BOLETUS BELLINII, IXOCOMUS BELLINII, ROSTKOVITES BELLINII)"	"Unter fünfnadeligen Kiefern ist er ein Mykorrhizapilz (Symbiosepilz) z.B. der Zirbelkiefer (pinus cembra) auch Arbe, Arve, Zirbe oder Zirbel genannt oder der Weymouthskiefer (pinus strobus), häufiger im mediterranen Raum"	Sommer bis Herbst	4
-"Ziegenlippe, Schafheiterl, Brauner Filzröhrling, Filziger Röhrling"	XEROCOMUS SUBTOMENTOSUS	Mischwald	Sommer bis Herbst	3
-"Maronenröhrling, Braunkappen, Braunkuppen, Braune, Bräunling, Marone"	XEROCOMUS BADIUS	Mischwald	Sommer bis Spätherbst	1
-"Birkenpilz, Gemeiner Birkenpilz, Langhaxen"	LECCINUM SCABRUM	Symbiosepilz mit Birke	Sommer bis Spätherbst	2
-"Butterröhrling, Butterpilz"	SUILLUS LUTEUS	Butterröhrlinge sind Mykorrhizapilze (Symbiosepilze) mit den Kiefern (Föhren)	Sommer bis Spätherbst	1
-"Grauer Lärchenröhrling, Graublasser Lärchenröhrling"	"SUILLUS VISCIDUS (SYN. SUILLUS LARICINUS, SUILLUS AERUGINASCENS)"	"Lärchen, kalkreicher Boden"	Sommer bis Spätherbst	2
-"Kuhröhrling, Kuhpilz"	SUILLUS BOVINUS	"Kiefern, nährstoffarmer Boden."	Sommer bis Spätherbst	2
-"Pappel-Raufuß, Pappelröhrling"	"LECCINUM DURIUSCULUM (SYN: LECCINUM AURANTIACUM S. DURIUSCULUM, KROMBHOLZIA AURANTIACA)"	"Pappel-Symbiont d.h. immer Pappel (Zitterpappeln) in der Nähe, Symbiosepilz (Mykorrhizapilz)"	Sommer bis Spätherbst	3
-Rostroter Lärchenröhrling	SUILLUS TRIDENTINUS	Lärchen	Sommer bis Spätherbst	2
-"Wollstieliger Raufußröhrlinge, Raustielröhrling, Graubrauner Birkenpilz"	LECCINUM BRUNNEOGRISEOLUM	"Feuchten Moorwald, saure Böden, Symbiosepilz (Mykorrhizapilz)"	Sommer bis Spätherbst	3
-"Mediterraner Körnchenröhrling, Mittelmeer-Körnchen-Röhrling"	SUILLUS MEDITERRANEENSIS (SYN. S. LEPTOPUS)	"Meist kalkreicher Boden, unter Kiefern ist er ein Mykorrhizapilz (Symbiosepilz) z.B. der Aleppokiefer (Pinus halepensis), Pinie (Pinus pinea), See-Kiefer (Pinus pinaster) im mediterranen Raum"	Herbst bis Frühjahr	4
+"Gelber HohfuÃŸrÃ¶hrling, Gelber HohlfuÃŸ"	SUILLUS CAVIPES F. AEREUS (GELBE FORM)	"Symbiosepilz unter LÃ¤rchen wachsend, vorliebend auf sauren Boden"	Sommer bis Herbst	2
+Glattstieliger HexenrÃ¶hrling	BOLETUS QUELETII	Laubwald	Sommer bis Herbst	1
+"GoldrÃ¶hrling, Goldgelber LÃ¤rchenrÃ¶hrling"	SUILLUS GREVILLEI	Mykorrhiza-Pilze (Symbiosepilze) mit der LÃ¤rche	Sommer bis Herbst	1
+KornblumenrÃ¶hrling	GYROPORUS CYANESCENS (GYROPORUS CYANESCENS VAR. LACTEUS)	Mischwald	Sommer bis Herbst	1
+"KÃ¶rnchenrÃ¶hrling, Schmerling"	SUILLUS GRANULATUS	Kiefer	Sommer bis Herbst	1
+MÃ¤hrischer FilzrÃ¶hrling	XEROCOMUS MORAVICUS	"Mischwald, meist Laubwald, besonders bei Eichen, Symbiosepilz"	Sommer bis Herbst	1
+"SandrÃ¶hrling, Hirsepilz"	SUILLUS VARIEGATUS	"Bei Kiefern, saurem Boden, Symbiosepilz (Mykorrhiza-begleiter der Kiefer)"	Sommer bis Herbst	1
+"WeiÃŸer Birkenpilz, Moorbirkenpilz"	"LECCINUM SCABRUM (VAR. NIVEUM, VAR. LECCINUM NUCATUM, LECCINUM HOLOPUS)"	"Birken, Symbiosepilz"	Sommer bis Herbst	1
+"HasenrÃ¶hrling, ZimtrÃ¶hrling"	GYROPORUS CASTANEUS	"Laubwald, Eichen, Haselnuss"	Sommer bis Herbst	2
+"HohlfuÃŸrÃ¶hrling, Brauner HohlfuÃŸrÃ¶hrling"	SUILLUS CAVIPESÂ  (SYN. BOLETINUS CAVIPES)	Symbiosepilz unter LÃ¤rchen wachsend	Sommer bis Herbst	2
+MoorrÃ¶hrling	SUILLUS FLAVIDUS	Kiefernwald	Sommer bis Herbst	4
+"NadelholzrÃ¶hrling, Rostbrauner GoldrÃ¶hrling"	PULVEROBOLETUS LIGNICOLA	FuÃŸ von NadelbÃ¤umen	Sommer bis Herbst	2
+"Ringloser Butterpilz, Ringlose ButterrÃ¶hrling, RosafÃ¼ÃŸige KÃ¶rnchenrÃ¶hrling"	"SUILLUS COLLINITUS, (SYN. SUILLUS FLURYI)"	"Kalkreicher Boden, WaldrÃ¤ndern, Parks, unter Kiefern ist er ein Mykorrhizapilz (Symbiosepilz), im mediterranem Raum kommt er gern unter der Aleppo-Kiefer (Pinus halepensis) vor"	Sommer bis Herbst	4
+"Schwarzblauender RÃ¶hrling, BlaufÃ¤rbender RÃ¶hrling"	BOLETUS PULVERULENTUS	Mischwald	Sommer bis Herbst	2
+"WeiÃŸbrauner SchmierrÃ¶hrling, Kleinsporiger KiefernrÃ¶hrling"	"SUILLUS BELLINII (SYN. BOLETUS BELLINII, IXOCOMUS BELLINII, ROSTKOVITES BELLINII)"	"Unter fÃ¼nfnadeligen Kiefern ist er ein Mykorrhizapilz (Symbiosepilz) z.B. der Zirbelkiefer (pinus cembra) auch Arbe, Arve, Zirbe oder Zirbel genannt oder der Weymouthskiefer (pinus strobus), hÃ¤ufiger im mediterranen Raum"	Sommer bis Herbst	4
+"Ziegenlippe, Schafheiterl, Brauner FilzrÃ¶hrling, Filziger RÃ¶hrling"	XEROCOMUS SUBTOMENTOSUS	Mischwald	Sommer bis Herbst	3
+"MaronenrÃ¶hrling, Braunkappen, Braunkuppen, Braune, BrÃ¤unling, Marone"	XEROCOMUS BADIUS	Mischwald	Sommer bis SpÃ¤therbst	1
+"Birkenpilz, Gemeiner Birkenpilz, Langhaxen"	LECCINUM SCABRUM	Symbiosepilz mit Birke	Sommer bis SpÃ¤therbst	2
+"ButterrÃ¶hrling, Butterpilz"	SUILLUS LUTEUS	ButterrÃ¶hrlinge sind Mykorrhizapilze (Symbiosepilze) mit den Kiefern (FÃ¶hren)	Sommer bis SpÃ¤therbst	1
+"Grauer LÃ¤rchenrÃ¶hrling, Graublasser LÃ¤rchenrÃ¶hrling"	"SUILLUS VISCIDUS (SYN. SUILLUS LARICINUS, SUILLUS AERUGINASCENS)"	"LÃ¤rchen, kalkreicher Boden"	Sommer bis SpÃ¤therbst	2
+"KuhrÃ¶hrling, Kuhpilz"	SUILLUS BOVINUS	"Kiefern, nÃ¤hrstoffarmer Boden."	Sommer bis SpÃ¤therbst	2
+"Pappel-RaufuÃŸ, PappelrÃ¶hrling"	"LECCINUM DURIUSCULUM (SYN: LECCINUM AURANTIACUM S. DURIUSCULUM, KROMBHOLZIA AURANTIACA)"	"Pappel-Symbiont d.h. immer Pappel (Zitterpappeln) in der NÃ¤he, Symbiosepilz (Mykorrhizapilz)"	Sommer bis SpÃ¤therbst	3
+Rostroter LÃ¤rchenrÃ¶hrling	SUILLUS TRIDENTINUS	LÃ¤rchen	Sommer bis SpÃ¤therbst	2
+"Wollstieliger RaufuÃŸrÃ¶hrlinge, RaustielrÃ¶hrling, Graubrauner Birkenpilz"	LECCINUM BRUNNEOGRISEOLUM	"Feuchten Moorwald, saure BÃ¶den, Symbiosepilz (Mykorrhizapilz)"	Sommer bis SpÃ¤therbst	3
+"Mediterraner KÃ¶rnchenrÃ¶hrling, Mittelmeer-KÃ¶rnchen-RÃ¶hrling"	SUILLUS MEDITERRANEENSIS (SYN. S.Â LEPTOPUS)	"Meist kalkreicher Boden, unter Kiefern ist er ein Mykorrhizapilz (Symbiosepilz) z.B. der Aleppokiefer (Pinus halepensis), Pinie (Pinus pinea), See-Kiefer (Pinus pinaster) im mediterranen Raum"	Herbst bis FrÃ¼hjahr	4

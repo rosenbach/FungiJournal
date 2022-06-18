@@ -8,23 +8,10 @@ using FungiJournal.Domain.Models;
 
 namespace FungiJournal.DataAccess.Importer
 {
-    public class FungiImporter : IFungiImporter
+    public class FungiImporter
     {
-        public void ImportFungi(Fungi fungi)
-        {
-            throw new NotImplementedException();
-        }
 
-        public void ImportFungis(string path)
-        {
-            List<Fungi> fungis = Read(path);
-            for (int i = 0; i < fungis.Count; i++)
-            {
-                ImportFungi(fungis[i]);
-            }
-        }
-
-        public List<Fungi> Read(string path)
+        public static List<Fungi> Read(string path)
         {
             try
             {
@@ -32,7 +19,7 @@ namespace FungiJournal.DataAccess.Importer
                 // The using statement also closes the StreamReader.
                 using StreamReader sr = new(@path, Encoding.UTF8);
                 List<Fungi> ImportedFungis = new();
-                string line;
+                String? line;
 
 
                 string sep = "\t";
@@ -44,15 +31,13 @@ namespace FungiJournal.DataAccess.Importer
                 {
                     if (!firstLine)
                     {
-                        Console.WriteLine(line);
                         var values = line.Split(sep.ToCharArray());
-                        Console.WriteLine(values);
 
                         ImportedFungis.Add(new Fungi
                         {
                             Name = values[0],
                             LatinName = values[1],
-                            Occurence = values[2],
+                            Occurrence = values[2],
                             Season = values[3],
                             FoodValue = int.Parse(values[4])
                         });

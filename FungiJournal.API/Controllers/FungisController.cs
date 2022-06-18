@@ -1,5 +1,6 @@
 ﻿using FungiJournal.API.Classes;
 using FungiJournal.DataAccess;
+using FungiJournal.DataAccess.Importer;
 using FungiJournal.Domain.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -28,10 +29,22 @@ namespace FungiJournal.API.Controllers
                     .Where(e => e.FungiId == queryParameters.FungiId);
             }
 
+            if (queryParameters.HasFoodValue())
+            {
+                fungis = fungis
+                    .Where(e => e.FoodValue == queryParameters.FoodValue);
+            }
+
             if (!string.IsNullOrEmpty(queryParameters.Name))
             {
                 fungis = fungis
                     .Where(e => e.Name.Contains(queryParameters.Name));
+            }
+
+            if (!string.IsNullOrEmpty(queryParameters.Season))
+            {
+                fungis = fungis
+                    .Where(e => e.Season.Contains(queryParameters.Season));
             }
 
             fungis = fungis
@@ -53,7 +66,7 @@ namespace FungiJournal.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostEntry([FromBody] Fungi fungi)
+        public async Task<IActionResult> PostFungi([FromBody] Fungi fungi)
         {
             await dataAccess.AddFungiAsync(fungi);
 
@@ -61,6 +74,21 @@ namespace FungiJournal.API.Controllers
                                    new { id = fungi.FungiId },
                                    fungi);
         }
+
+        //temporary method just to import the local fungis.
+        ///may be reused and improved for a future upload/import feature
+        //[HttpPost("import")]
+        //public async Task<IActionResult> PostImportedFungis()
+        //{
+        //    List<Fungi> fungis = FungiImporter.Read(@"C:\Users\m_kae\source\repos\FungiJournal\FungiJournal.DataAccess\Importer\pilze_small.txt");
+            
+        //    for (int i = 0; i < fungis.Count; i++)
+        //    {
+        //        await PostFungi(fungis[i]);
+        //    }
+
+        //    return Ok(fungis[0]);
+        //}
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteFungi(int id)
@@ -77,6 +105,27 @@ namespace FungiJournal.API.Controllers
             }
             return Ok(fungiToDelete);
         }
+
+        [HttpDelete("all")]
+        public async Task<IActionResult> DeleteAllFungis()
+        {
+            List<Fungi> fungisToDelete = await dataAccess.GetFungisAsync();
+
+            for (int i = 0; i < fungisToDelete.Count; i++)
+            {
+                if (fungisToDelete[i] == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    await dataAccess.DeleteFungiAsync(fungisToDelete[i]);
+                }
+            }
+
+            return Ok(fungisToDelete);
+        }
+    
 
         [HttpPut("{id}")]
         public async Task<IActionResult> PutFungi([FromRoute] int id,
