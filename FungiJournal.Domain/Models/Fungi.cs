@@ -9,10 +9,14 @@ namespace FungiJournal.Domain.Models
 {
     public class Fungi
     {
-        [Required] [Key]
+        [Required]
+        [Key]
         public int FungiId { get; set; }
         public string? Name { get; set; }
         public string? LatinName { get; set; }
         public bool? IsToxic { get; set; }
+        public string? Occurrence { get; set; }
+        public string? Season { get; set; }
+        public int? FoodValue { get; set; }
     }
 }

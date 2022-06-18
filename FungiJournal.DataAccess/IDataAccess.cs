@@ -16,5 +16,13 @@ namespace FungiJournal.DataAccess
         Task<int> AddEntryAsync(Entry entry);
         Task UpdateEntryAsync(Entry entry);
         Task DeleteEntryAsync(Entry entry);
+
+        //Fungis
+        Task<List<Fungi>> GetFungisAsync();
+        DbSet<Fungi> GetFungis();
+        Task<Fungi> GetFungiAsync(int id);
+        Task<int> AddFungiAsync(Fungi fungi);
+        Task UpdateFungiAsync(Fungi fungi);
+        Task DeleteFungiAsync(Fungi fungi);
     }
 }

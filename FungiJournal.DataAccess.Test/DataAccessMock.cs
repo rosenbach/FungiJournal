@@ -15,6 +15,10 @@ namespace FungiJournal.DataAccess.Test
         {
             return new Entry { Description = "Mock Entry" };
         }
+        internal static Fungi CreateMockFungi()
+        {
+            return new Fungi { Name = "Mock Fungi" };
+        }
 
         public static CodeFirstDbContext CreateMockDBContext()
         {
@@ -22,5 +26,6 @@ namespace FungiJournal.DataAccess.Test
             var dbContextOptions = new DbContextOptionsBuilder<CodeFirstDbContext>().Options;
             return new CodeFirstDbContext(dbContextOptions, options);
         }
+
     }
 }

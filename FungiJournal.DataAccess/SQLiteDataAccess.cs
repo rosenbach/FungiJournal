@@ -70,6 +70,44 @@ namespace FungiJournal.DataAccess
             }
         }
 
+        public Task<List<Fungi>> GetFungisAsync()
+        {
+            return codeFirstDbContext.Fungis!.ToListAsync();
+        }
 
+        public DbSet<Fungi> GetFungis()
+        {
+            return codeFirstDbContext.Fungis!;
+        }
+
+        public async Task<Fungi> GetFungiAsync(int id)
+        {
+            var output = await codeFirstDbContext.Fungis!.FindAsync(id);
+            return output!;
+        }
+
+        public Task<int> AddFungiAsync(Fungi fungi)
+        {
+            codeFirstDbContext.Fungis?.Add(fungi);
+            return codeFirstDbContext.SaveChangesAsync();
+        }
+
+        public Task DeleteFungiAsync(Fungi fungi)
+        {
+            codeFirstDbContext.Fungis?.Remove(fungi);
+            return codeFirstDbContext.SaveChangesAsync();
+        }
+        public Task UpdateFungiAsync(Fungi fungi)
+        {
+            codeFirstDbContext.Entry(fungi).State = EntityState.Modified;
+            try
+            {
+                return codeFirstDbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                throw;
+            }
+        }
     }
 }
