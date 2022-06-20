@@ -114,8 +114,10 @@ namespace FungiJournal.Api.Test
             await sut.PostEntry(mockEntry);
             await sut.PostEntry(mockEntry2);
 
-            EntryQueryParameters queryParameters = new();
-            queryParameters.Description = DescriptionToSearchFor;
+            EntryQueryParameters queryParameters = new()
+            {
+                Description = DescriptionToSearchFor
+            };
 
             var expected = new[]
             {
@@ -173,8 +175,13 @@ namespace FungiJournal.Api.Test
             var sut = new EntriesController(sqLiteDataAccess);
             Entry mockEntry = DataAccessMock.CreateMockEntry();
             await sut.PostEntry(mockEntry);
+
+            Fungi mockFungi = DataAccessMock.CreateMockFungi();
+            string modifiedFungiName = "I was modified";
+            mockFungi.Name = modifiedFungiName;
             string modifiedDescription = "I was modified";
             mockEntry.Description = modifiedDescription;
+            mockEntry.Fungi = mockFungi;
 
 
             //act
@@ -186,6 +193,7 @@ namespace FungiJournal.Api.Test
             entries.Should().ContainSingle();
             var resultFromDatabase = entries.Single();
             resultFromDatabase.Description.Should().Be(modifiedDescription);
+            resultFromDatabase.Fungi?.Name.Should().Be(modifiedFungiName);
         }
 
         [Fact]

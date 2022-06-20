@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FungiJournal.Domain.Models
 {
-    public class Fungi
+    public record Fungi
     {
         [Required]
         [Key]

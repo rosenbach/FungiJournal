@@ -23,7 +23,9 @@ namespace FungiJournal.DataAccess
 
         public Task<List<Entry>> GetEntriesAsync()
         {
-            return codeFirstDbContext.Entries!.ToListAsync();
+            return codeFirstDbContext.Entries!
+                .Include(x => x.Fungi)
+                .ToListAsync();
         }
 
         public DbSet<Entry> GetEntries()
