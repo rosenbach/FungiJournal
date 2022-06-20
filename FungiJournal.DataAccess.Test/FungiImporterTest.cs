@@ -7,6 +7,7 @@ using System;
 using System.Threading.Tasks;
 using FungiJournal.Domain.Models;
 using System.Collections.Generic;
+using System.IO;
 
 namespace FungiJournal.DataAccess.Test
 {
@@ -16,7 +17,8 @@ namespace FungiJournal.DataAccess.Test
         [Fact]
         public void TestIfUmlauteGetReadCorrectly()
         {
-            List<Fungi> importedFungis = FungiImporter.Read(@"C:\Users\m_kae\source\repos\FungiJournal\FungiJournal.DataAccess\Importer\pilze_small.txt");
+            //arrange
+            List<Fungi> importedFungis = FungiImporter.Read(@".\Importer\pilze_small.txt");
 
             //act
             var result = importedFungis[0].Name;
@@ -31,8 +33,7 @@ namespace FungiJournal.DataAccess.Test
             //first fungi: "Birkenrotkappe, Heiderotkappe, Schwarzschuppiger Birkenröhrling"
 
             //arrange
-            FungiImporter fungiImporter = new();
-            List<Fungi> importedFungis = FungiImporter.Read(@"C:\Users\m_kae\source\repos\FungiJournal\FungiJournal.DataAccess\Importer\pilze_small.txt");
+            List<Fungi> importedFungis = FungiImporter.Read(@".\Importer\pilze_small.txt");
 
             //act
             var result = importedFungis[0].Name;
@@ -47,8 +48,7 @@ namespace FungiJournal.DataAccess.Test
             //file contains 48 entries
 
             //arrange
-            FungiImporter fungiImporter = new();
-            List<Fungi> importedFungis = FungiImporter.Read(@"C:\Users\m_kae\source\repos\FungiJournal\FungiJournal.DataAccess\Importer\pilze_small.txt");
+            List<Fungi> importedFungis = FungiImporter.Read(@".\Importer\pilze_small.txt");
 
             //act
             var result = importedFungis.Count;

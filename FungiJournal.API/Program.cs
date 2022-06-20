@@ -6,6 +6,17 @@ builder.Configuration.AddJsonFile("appsettings.json");
 builder.Services.Configure<DataAccessConfiguration>(builder.Configuration.GetSection(nameof(DataAccessConfiguration)));
 // Add services to the container.
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      builder =>
+                      {
+                          builder.WithOrigins("http://192.168.1.4:3000/",
+                                                "http://localhost:3000");
+                      });
+});
 
 builder.Services.AddControllers();
 
@@ -22,8 +33,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseCors(MyAllowSpecificOrigins);
 }
 
 //app.UseHttpsRedirection();

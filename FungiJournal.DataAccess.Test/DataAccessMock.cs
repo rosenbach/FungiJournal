@@ -11,13 +11,25 @@ namespace FungiJournal.DataAccess.Test
 {
     public static class DataAccessMock
     {
+
         public static Entry CreateMockEntry()
         {
-            return new Entry { Description = "Mock Entry" };
+            return new Entry {
+                Fungi = CreateMockFungi(),
+                Description = "Mock Entry"
+            };
         }
-        internal static Fungi CreateMockFungi()
+
+        public static Fungi CreateMockFungi()
         {
-            return new Fungi { Name = "Mock Fungi" };
+            return new Fungi {
+                Name = "Mock Fungi",
+                LatinName = "Mock Fungi Latin",
+                IsToxic = false,
+                Occurrence = "Mock Occurrence",
+                Season = "Mock Season",
+                FoodValue = 1
+            };
         }
 
         public static CodeFirstDbContext CreateMockDBContext()

@@ -41,6 +41,8 @@ namespace FungiJournal.DataAccess.Test
             var expected = new[] {
                 new Entry {
                     EntryId = mockEntry.EntryId,
+                    FungiId = mockEntry.FungiId,
+                    Fungi = mockEntry.Fungi,
                     Description = mockEntry.Description
                 }
             };
@@ -53,8 +55,7 @@ namespace FungiJournal.DataAccess.Test
             entries.Should().BeEquivalentTo(expected, options =>
                 options
                 .Excluding(e => e.CreatedAt)
-                .Excluding(e=>e.LastModified));
-
+                .Excluding(e => e.LastModified));
         }
 
         [Fact]
@@ -85,6 +86,8 @@ namespace FungiJournal.DataAccess.Test
             var expected = new[] {
                 new Entry {
                     EntryId = mockEntry.EntryId,
+                    FungiId = mockEntry.FungiId,
+                    Fungi = mockEntry.Fungi,
                     Description = "Mocki Mock"
                 }
             };
@@ -132,7 +135,12 @@ namespace FungiJournal.DataAccess.Test
             var expected = new[] {
                 new Fungi {
                     FungiId = mockFungi.FungiId,
-                    Name = mockFungi.Name
+                    Name = mockFungi.Name,
+                    LatinName = mockFungi.LatinName,
+                    IsToxic = mockFungi.IsToxic,
+                    Occurrence = mockFungi.Occurrence,
+                    Season = mockFungi.Season,
+                    FoodValue = mockFungi.FoodValue
                 }
             };
 
@@ -160,7 +168,12 @@ namespace FungiJournal.DataAccess.Test
             var expected = new[] {
                 new Fungi {
                     FungiId = mockFungi.FungiId,
-                    Name = "Mocki Mock"
+                    Name = "Mocki Mock",
+                    LatinName = mockFungi.LatinName,
+                    IsToxic = mockFungi.IsToxic,
+                    Occurrence = mockFungi.Occurrence,
+                    Season = mockFungi.Season,
+                    FoodValue = mockFungi.FoodValue
                 }
             };
 

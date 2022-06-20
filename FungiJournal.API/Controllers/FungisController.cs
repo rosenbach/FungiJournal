@@ -2,6 +2,7 @@
 using FungiJournal.DataAccess;
 using FungiJournal.DataAccess.Importer;
 using FungiJournal.Domain.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,7 @@ namespace FungiJournal.API.Controllers
         }
 
         [HttpGet]
+        [EnableCors]
         public async Task<IActionResult> GetAll([FromQuery] FungiQueryParameters queryParameters)
         {
             IQueryable<Fungi> fungis = dataAccess.GetFungis();
@@ -54,6 +56,7 @@ namespace FungiJournal.API.Controllers
             return Ok(await fungis.ToArrayAsync());
         }
 
+        [EnableCors]
         public async Task<IActionResult> GetAll()
         {
             return Ok(await dataAccess.GetFungisAsync());

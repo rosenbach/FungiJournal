@@ -21,6 +21,7 @@ namespace FungiJournal.API.Controllers
         public async Task<IActionResult> GetAll([FromQuery] EntryQueryParameters queryParameters)
         {
             IQueryable<Entry> entries = dataAccess.GetEntries();
+            //IQueryable<Entry> entries = (IQueryable<Entry>)await dataAccess.GetEntriesAsync();
 
             if (queryParameters.HasEntryId())
             {
@@ -38,7 +39,7 @@ namespace FungiJournal.API.Controllers
                 .Skip(queryParameters.Size * (queryParameters.Page - 1))
                 .Take(queryParameters.Size);
 
-            return Ok(await entries.ToArrayAsync());
+            return Ok(await entries.Include(x=>x.Fungi).ToArrayAsync());
         }
 
         public async Task<IActionResult> GetAll()

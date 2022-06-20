@@ -15,9 +15,10 @@ namespace FungiJournal.Domain.Models
         public DateTime? CreatedAt { get; private set; }
         public DateTime? LastModified { get; private set; }
 
-        [ForeignKey("FungiId")]
+        [ForeignKey("Fungi")]
         public int? FungiId { get; set; }
-        public Fungi? Fungi { get; set; }
+
+        public virtual Fungi? Fungi { get; set; }
         public string? Description { get; set; }
 
         public void UpdateTimestamp()
