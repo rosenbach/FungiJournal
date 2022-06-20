@@ -18,7 +18,7 @@ namespace FungiJournal.DataAccess.Test
         public void TestIfUmlauteGetReadCorrectly()
         {
             //arrange
-            List<Fungi> importedFungis = FungiImporter.Read(@".\Importer\pilze_small.txt");
+            List<Fungi> importedFungis = FungiImporter.Read(@"./Importer/pilze_small.txt");
 
             //act
             var result = importedFungis[0].Name;
@@ -33,7 +33,7 @@ namespace FungiJournal.DataAccess.Test
             //first fungi: "Birkenrotkappe, Heiderotkappe, Schwarzschuppiger Birkenröhrling"
 
             //arrange
-            List<Fungi> importedFungis = FungiImporter.Read(@".\Importer\pilze_small.txt");
+            List<Fungi> importedFungis = FungiImporter.Read(@"./Importer/pilze_small.txt");
 
             //act
             var result = importedFungis[0].Name;
@@ -48,7 +48,7 @@ namespace FungiJournal.DataAccess.Test
             //file contains 48 entries
 
             //arrange
-            List<Fungi> importedFungis = FungiImporter.Read(@".\Importer\pilze_small.txt");
+            List<Fungi> importedFungis = FungiImporter.Read(@"./Importer/pilze_small.txt");
 
             //act
             var result = importedFungis.Count;
