@@ -37,4 +37,10 @@
     <ProjectReference Include="..\FungiJournal.Domain\FungiJournal.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Importer\pilze_small.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
