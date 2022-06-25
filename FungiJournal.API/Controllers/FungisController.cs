@@ -78,13 +78,28 @@ namespace FungiJournal.API.Controllers
                                    fungi);
         }
 
+        [HttpPost("{id}")]
+        public async Task<IActionResult> PostUpdateFungi([FromRoute] int id,
+                                        [FromBody] Fungi fungi)
+        {
+            if (id != fungi.FungiId)
+            {
+                return BadRequest();
+            }
+            else
+            {
+                await dataAccess.UpdateFungiAsync(fungi);
+            }
+            return NoContent();
+        }
+
         //temporary method just to import the local fungis.
         ///may be reused and improved for a future upload/import feature
         //[HttpPost("import")]
         //public async Task<IActionResult> PostImportedFungis()
         //{
         //    List<Fungi> fungis = FungiImporter.Read(@"C:\Users\m_kae\source\repos\FungiJournal\FungiJournal.DataAccess\Importer\pilze_small.txt");
-            
+
         //    for (int i = 0; i < fungis.Count; i++)
         //    {
         //        await PostFungi(fungis[i]);
@@ -134,15 +149,7 @@ namespace FungiJournal.API.Controllers
         public async Task<IActionResult> PutFungi([FromRoute] int id,
                                                         [FromBody] Fungi fungi)
         {
-            if (id != fungi.FungiId)
-            {
-                return BadRequest();
-            }
-            else
-            {
-                await dataAccess.UpdateFungiAsync(fungi);
-            }
-            return NoContent();
+            return await PostUpdateFungi(id, fungi);
         }
     }
 }
