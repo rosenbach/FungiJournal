@@ -10,11 +10,14 @@ var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 builder.Services.AddCors(options =>
 {
+
     options.AddPolicy(name: MyAllowSpecificOrigins,
                       builder =>
                       {
                           builder.WithOrigins("http://192.168.1.4:3000/",
-                                                "http://localhost:3000");
+                                                "http://localhost:3000")
+                                              .WithMethods("DELETE", "GET");
+                          
                       });
 });
 
