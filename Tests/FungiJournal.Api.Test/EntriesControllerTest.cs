@@ -178,7 +178,7 @@ namespace FungiJournal.Api.Test
 
             Fungi mockFungi = DataAccessMock.CreateMockFungi();
             string modifiedFungiName = "I was modified";
-            mockFungi.Name = modifiedFungiName;
+            mockFungi.CommonName = modifiedFungiName;
             string modifiedDescription = "I was modified";
             mockEntry.Description = modifiedDescription;
             mockEntry.Fungi = mockFungi;
@@ -193,7 +193,7 @@ namespace FungiJournal.Api.Test
             entries.Should().ContainSingle();
             var resultFromDatabase = entries.Single();
             resultFromDatabase.Description.Should().Be(modifiedDescription);
-            resultFromDatabase.Fungi?.Name.Should().Be(modifiedFungiName);
+            resultFromDatabase.Fungi?.CommonName.Should().Be(modifiedFungiName);
         }
 
         [Fact]

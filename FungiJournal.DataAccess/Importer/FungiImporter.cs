@@ -35,7 +35,7 @@ namespace FungiJournal.DataAccess.Importer
 
                         ImportedFungis.Add(new Fungi
                         {
-                            Name = values[0],
+                            CommonName = values[0],
                             LatinName = values[1],
                             Occurrence = values[2],
                             Season = values[3],

@@ -1,4 +1,5 @@
 using FungiJournal.DataAccess;
+using Microsoft.AspNetCore.Mvc;
 using System.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,7 +17,7 @@ builder.Services.AddCors(options =>
                       {
                           builder.WithOrigins("http://192.168.1.4:3000/",
                                                 "http://localhost:3000")
-                                              .WithMethods("DELETE", "GET");
+                                              .WithMethods("DELETE", "GET", "POST");
                           
                       });
 });

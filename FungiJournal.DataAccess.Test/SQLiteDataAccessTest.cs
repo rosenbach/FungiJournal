@@ -135,7 +135,7 @@ namespace FungiJournal.DataAccess.Test
             var expected = new[] {
                 new Fungi {
                     FungiId = mockFungi.FungiId,
-                    Name = mockFungi.Name,
+                    CommonName = mockFungi.CommonName,
                     LatinName = mockFungi.LatinName,
                     IsToxic = mockFungi.IsToxic,
                     Occurrence = mockFungi.Occurrence,
@@ -163,12 +163,12 @@ namespace FungiJournal.DataAccess.Test
 
             await sut.AddFungiAsync(mockFungi);
 
-            mockFungi.Name = "Mocki Mock";
+            mockFungi.CommonName = "Mocki Mock";
 
             var expected = new[] {
                 new Fungi {
                     FungiId = mockFungi.FungiId,
-                    Name = "Mocki Mock",
+                    CommonName = "Mocki Mock",
                     LatinName = mockFungi.LatinName,
                     IsToxic = mockFungi.IsToxic,
                     Occurrence = mockFungi.Occurrence,

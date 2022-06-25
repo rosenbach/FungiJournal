@@ -40,7 +40,7 @@ namespace FungiJournal.API.Controllers
             if (!string.IsNullOrEmpty(queryParameters.Name))
             {
                 fungis = fungis
-                    .Where(e => e.Name.Contains(queryParameters.Name));
+                    .Where(e => e.CommonName.Contains(queryParameters.Name));
             }
 
             if (!string.IsNullOrEmpty(queryParameters.Season))
@@ -77,6 +77,16 @@ namespace FungiJournal.API.Controllers
                                    new { id = fungi.FungiId },
                                    fungi);
         }
+
+        [HttpPost("form/{id}")]
+        [EnableCors]
+        [Consumes("application/x-www-form-urlencoded")]
+        public async Task<IActionResult> PostFungiForm([FromRoute] int id, [FromForm] Fungi fungi)
+        {
+            return await PostUpdateFungi(id, fungi);
+        }
+
+
 
         [HttpPost("{id}")]
         public async Task<IActionResult> PostUpdateFungi([FromRoute] int id,
@@ -143,7 +153,7 @@ namespace FungiJournal.API.Controllers
 
             return Ok(fungisToDelete);
         }
-    
+
 
         [HttpPut("{id}")]
         public async Task<IActionResult> PutFungi([FromRoute] int id,

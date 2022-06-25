@@ -23,7 +23,7 @@ namespace FungiJournal.DataAccess.Test
         public static Fungi CreateMockFungi()
         {
             return new Fungi {
-                Name = "Mock Fungi",
+                CommonName = "Mock Fungi",
                 LatinName = "Mock Fungi Latin",
                 IsToxic = false,
                 Occurrence = "Mock Occurrence",
