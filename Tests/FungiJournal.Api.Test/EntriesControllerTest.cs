@@ -188,7 +188,6 @@ namespace FungiJournal.Api.Test
             var result = await sut.PutEntry(mockEntry.EntryId, mockEntry);
 
             //assert
-            result.Should().BeOfType<NoContentResult>();
             var entries = await sqLiteDataAccess.GetEntriesAsync();
             entries.Should().ContainSingle();
             var resultFromDatabase = entries.Single();
