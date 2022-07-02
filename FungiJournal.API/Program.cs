@@ -17,8 +17,8 @@ builder.Services.AddCors(options =>
                       {
                           builder.WithOrigins("http://192.168.1.4:3000/",
                                                 "http://localhost:3000")
-                                              .WithMethods("DELETE", "GET", "POST");
-                          
+                                    .WithMethods("DELETE", "GET", "POST", "PUT")
+                                    .WithHeaders("Content-Type", "Accept");
                       });
 });
 
