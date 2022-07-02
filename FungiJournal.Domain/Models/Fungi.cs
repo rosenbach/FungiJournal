@@ -12,7 +12,7 @@ namespace FungiJournal.Domain.Models
         [Required]
         [Key]
         public int FungiId { get; set; }
-        public string? Name { get; set; }
+        public string? CommonName { get; set; }
         public string? LatinName { get; set; }
         public bool? IsToxic { get; set; }
         public string? Occurrence { get; set; }

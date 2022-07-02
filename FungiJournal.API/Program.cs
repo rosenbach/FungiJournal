@@ -1,4 +1,5 @@
 using FungiJournal.DataAccess;
+using Microsoft.AspNetCore.Mvc;
 using System.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,11 +11,14 @@ var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 builder.Services.AddCors(options =>
 {
+
     options.AddPolicy(name: MyAllowSpecificOrigins,
                       builder =>
                       {
                           builder.WithOrigins("http://192.168.1.4:3000/",
-                                                "http://localhost:3000");
+                                                "http://localhost:3000")
+                                    .WithMethods("DELETE", "GET", "POST", "PUT")
+                                    .WithHeaders("Content-Type", "Accept");
                       });
 });
 

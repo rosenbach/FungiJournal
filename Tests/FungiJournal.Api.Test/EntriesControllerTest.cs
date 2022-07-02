@@ -178,7 +178,7 @@ namespace FungiJournal.Api.Test
 
             Fungi mockFungi = DataAccessMock.CreateMockFungi();
             string modifiedFungiName = "I was modified";
-            mockFungi.Name = modifiedFungiName;
+            mockFungi.CommonName = modifiedFungiName;
             string modifiedDescription = "I was modified";
             mockEntry.Description = modifiedDescription;
             mockEntry.Fungi = mockFungi;
@@ -188,12 +188,11 @@ namespace FungiJournal.Api.Test
             var result = await sut.PutEntry(mockEntry.EntryId, mockEntry);
 
             //assert
-            result.Should().BeOfType<NoContentResult>();
             var entries = await sqLiteDataAccess.GetEntriesAsync();
             entries.Should().ContainSingle();
             var resultFromDatabase = entries.Single();
             resultFromDatabase.Description.Should().Be(modifiedDescription);
-            resultFromDatabase.Fungi?.Name.Should().Be(modifiedFungiName);
+            resultFromDatabase.Fungi?.CommonName.Should().Be(modifiedFungiName);
         }
 
         [Fact]

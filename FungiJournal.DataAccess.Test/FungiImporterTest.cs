@@ -21,7 +21,7 @@ namespace FungiJournal.DataAccess.Test
             List<Fungi> importedFungis = FungiImporter.Read(@"./Importer/pilze_small.txt");
 
             //act
-            var result = importedFungis[0].Name;
+            var result = importedFungis[0].CommonName;
 
             //assert
             result.Should().Contain("Schwarzschuppiger Birkenröhrling");
@@ -36,7 +36,7 @@ namespace FungiJournal.DataAccess.Test
             List<Fungi> importedFungis = FungiImporter.Read(@"./Importer/pilze_small.txt");
 
             //act
-            var result = importedFungis[0].Name;
+            var result = importedFungis[0].CommonName;
 
             //assert
             result.Should().Contain("Birkenrotkappe");
