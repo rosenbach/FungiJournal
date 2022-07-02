@@ -91,7 +91,7 @@ namespace FungiJournal.API.Controllers
             {
                 await dataAccess.UpdateEntryAsync(entry);
             }
-            return NoContent();
+            return Ok(entry);
         }
     }
 }
